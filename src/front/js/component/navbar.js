@@ -116,84 +116,87 @@ export const Navbar = () => {
     // </ul>
 
     <nav
-      className="navbar navbar-expand-sm navbar-light fixed-top bg-light"
+      className="navbar navbar-expand-sm navbar-light bg-light"
       // style={{ textColor: "white" }}
     >
-      {/* <a className="navbar-brand" to="/">
+      <div class="container-fluid">
+        {/* <a className="navbar-brand" to="/">
           WORDSWORD
         </a> */}
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div
-        className="collapse navbar-collapse text-white container-fluid justify-content-center"
-        id="navbarNav"
-      >
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link className="nav-link" aria-current="page" to="/">
-              Home
-            </Link>
-          </li>
-            {//conditionally render based on if user is NOT verified
-            !store.verifiedUser ? (
-              <>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div
+          className="collapse navbar-collapse text-white container-fluid justify-content-center"
+          id="navbarNav"
+        >
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/">
+                Home
+              </Link>
+            </li>
+            {
+              //conditionally render based on if user is NOT verified
+              !store.verifiedUser ? (
+                <>
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/create" className="nav-link">
+                      Join
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <></>
+              )
+            }
+            {
+              //conditionally render based on if user is verified
+              store.verifiedUser ? (
                 <li className="nav-item">
-                  <Link to="/login" className="nav-link">
-                    Login
+                  <Link className="nav-link" to="/user  ">
+                    Personal Portal
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/create" className="nav-link">
-                    Join
-                  </Link>
+              ) : (
+                <></>
+              )
+            }
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                About Us
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/donate">
+                Donate
+              </Link>
+            </li>
+            {
+              //conditionally render based on if user is verified
+              store.verifiedUser ? (
+                <li className="nav-item nav-link" onClick={handleSignout}>
+                  Sign Out
                 </li>
-              </>
-            ) : (
-              <></>
-            )
-          }
-          {
-            //conditionally render based on if user is verified
-            store.verifiedUser ? (
-              <li className="nav-item">
-                <Link className="nav-link" to="/user  ">
-                  Personal Portal
-                </Link>
-              </li>
-            ) : (
-              <></>
-            )
-          }
-          <li className="nav-item">
-            <Link className="nav-link" to="/about">
-              About Us
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/donate">
-              Donate
-            </Link>
-          </li>
-          {
-            //conditionally render based on if user is verified
-            store.verifiedUser ? (
-              <li className="nav-item nav-link" onClick={handleSignout}>
-                Sign Out
-              </li>
-            ) : (
-              <></>
-            )
-          }
-        </ul>
+              ) : (
+                <></>
+              )
+            }
+          </ul>
+        </div>
       </div>
     </nav>
   );

@@ -25,12 +25,12 @@
 
 /* 
     CSS FOR DEBUGGING
-
+*/
 div {
   border: 1px solid #fa8072;
   border-style: dashed;
 }
-*/
+
 .button-submit {
   margin-bottom: 2rem;
 }
