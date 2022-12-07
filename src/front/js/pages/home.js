@@ -21,9 +21,8 @@ export const Home = () => {
         !store.verifiedUser ? (
           <p className="titleP mb-5">
             {" "}
-            Word sword is a webapp that can take long text documents, files, or
-            pdfs and run them through our algorithm to conver them into concise
-            summaries
+            WordSword takes long text documents or
+            pdfs and runs them through our algorithm to isolate the most important parts and convert them into a more concise file.
           </p>
         ) : (
           <></>
