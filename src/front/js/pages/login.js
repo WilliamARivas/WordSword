@@ -28,7 +28,7 @@ export const Login = () => {
         !store.verifiedUser ? navigate("/login") : navigate("/user");
         resolve("slow");
         console.log("slow promise is done");
-      }, 500);
+      }, 1000);
     });
   }
 

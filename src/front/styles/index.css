@@ -1,15 +1,6 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
-.footer {
-  float: none;
-  margin: 0 auto;
-  background-color: rgba(255, 0, 0, 0.25);
-}
-.footerLogo {
-  width: 90px;
-  float: right;
-}
 .cutesiefy {
   background-color: #e7e7e7;
   color: black;
@@ -34,24 +25,15 @@
 
 /* 
     CSS FOR DEBUGGING
-*/
+
 div {
   border: 1px solid #fa8072;
   border-style: dashed;
 }
-.main {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
-nav {
-  text-decoration-color: white;
-}
+*/
 .button-submit {
   margin-bottom: 2rem;
 }
 body {
-  background-color: black;
+  background-color: rgba(16, 151, 235, 0.082);
 }
