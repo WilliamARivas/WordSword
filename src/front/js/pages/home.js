@@ -10,6 +10,7 @@ export const Home = () => {
 
   //variable for the text box that the user pastes in for our algorithm
   const [text, setText] = useState("");
+  const [file, setFile] = useState(null);
 
   return (
     <div className="text-center">
@@ -47,12 +48,13 @@ export const Home = () => {
           id="textFile"
           name="textFile"
           accept=".txt, .pdf"
+          onChange={(e) => setFile(e.target.value)}
         ></input>
         <input
           type="submit"
           value="Slice File"
           onClick={() => {
-            actions.setFile(textFile);
+            actions.setFile(file);
           }}
         />
 
@@ -71,7 +73,7 @@ export const Home = () => {
           type="submit"
           value="Slice Text"
           onClick={() => {
-            //actions.setFile(typedInput)
+            actions.handlePaste(text)
             console.log(text);
           }}
         />

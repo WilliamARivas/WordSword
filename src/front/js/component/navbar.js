@@ -119,7 +119,7 @@ export const Navbar = () => {
       className="navbar navbar-expand-sm navbar-light bg-light"
       // style={{ textColor: "white" }}
     >
-      <div class="container-fluid">
+      <div className="container-fluid">
         {/* <a className="navbar-brand" to="/">
           WORDSWORD
         </a> */}

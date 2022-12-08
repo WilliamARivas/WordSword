@@ -124,6 +124,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             console.log("this is the get verified error: ", err);
           });
       },
+      sliceText: async () => {
+        //placehold
+      }
     },
   };
 };
