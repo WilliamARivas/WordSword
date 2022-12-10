@@ -124,11 +124,41 @@ const getState = ({ getStore, getActions, setStore }) => {
             console.log("this is the get verified error: ", err);
           });
       },
-      sliceText: async () => {
+      sliceText: () => {
         //placehold
+        const resultText = [];
+        const newArray = store.textArray.split(/\r?\n/) //splits text by new line to get paragraphs
+        for (let i = 0; i < newArray.length; i++){ //for each paragraph
+          const currentParagraph = newArray[i].split(/. /) //create an array containing each line in a paragraph
+          for (let j = 0; j < currentParagraph.length; j++){ //for each line in the paragraph
+            let newString = currentParagraph[j]
+            if (j == 0) {
+              if (newString < 50){
+                console.log("Entered short condition")
+                resultText.push(newString + ".")
+                resultText.push(currentParagraph[j+1] + ".")
+              }
+              else {
+                resultText.push(newString + ".")
+              }
+            }
+            else if (j == (currentParagraph.length-1)) {
+              if (newString < 50){
+                console.log("Entered short condition")
+                resultText.push(currentParagraph[j-1] + ".")
+                resultText.push(newString + ".")
+              }
+              else {
+                resultText.push(newString + ".")
+              }
+            }
+            console.log("End j loop")
+            } //ends j loop
+          } //ends i loop
+          console.log(resultText)
+          setStore({ displayText: resultText });
+        } //closes slice text
       }
-    },
-  };
-};
-
+    }
+  }
 export default getState;

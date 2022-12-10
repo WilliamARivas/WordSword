@@ -74,7 +74,8 @@ export const Home = () => {
           value="Slice Text"
           onClick={() => {
             actions.handlePaste(text)
-            console.log(text);
+            console.log(store.textArray);
+            actions.sliceText()
           }}
         />
       </form>
