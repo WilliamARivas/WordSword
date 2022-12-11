@@ -13,6 +13,8 @@ export const Create = () => {
   const { store, actions } = useContext(Context);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
 
   //initiating navigate
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ export const Create = () => {
     //createUser function in Flux, we need to write code
     //to double check data integretity before sending to the flux function
     //for it to be safer
-    actions.createUser(email, password);
+    actions.createUser(fName, lName, email, password);
 
     //send the new user to test their login/login for the first time
     navigate("/login");
@@ -33,14 +35,34 @@ export const Create = () => {
 
   return (
     <div className="create w-75" style={{ marginLeft: "12%" }}>
-      {/* <div className="text-center align-items-center"> */}
-      <br></br>
-      <br></br>
-      <h1>Join WordSword!</h1>
-      <br></br>
-      <div className="">
+      <div className=" d-flex justify-content-center align-items-center">
+        <br></br>
+        <h1>Join WordSword!</h1>
+        <br></br>
+      </div>
+      <div className="d-flex align-items-center justify-content-center">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="mail">Email:</label>
+          <label htmlFor="mail">First Name: &nbsp;&nbsp;</label>
+          <input
+            type="text"
+            id="fName"
+            name="fName"
+            value={fName}
+            placeholder="John/Jane"
+            onChange={(event) => setFName(event.currentTarget.value)}
+          ></input>
+          <br></br>
+          <label htmlFor="mail">Last Name: &nbsp;&nbsp;</label>
+          <input
+            type="text"
+            id="lName"
+            name="lName"
+            value={lName}
+            placeholder="Doe"
+            onChange={(event) => setLName(event.currentTarget.value)}
+          ></input>
+          <br></br>
+          <label htmlFor="mail">Email: &nbsp;&nbsp;</label>
           <input
             type="email"
             id="mail"
@@ -50,7 +72,7 @@ export const Create = () => {
             onChange={(event) => setEmail(event.currentTarget.value)}
           ></input>
           <br></br>
-          <label htmlFor="pass">Password:</label>
+          <label htmlFor="pass">Password: &nbsp;&nbsp;</label>
           <input
             type="password"
             id="pass"
@@ -64,7 +86,6 @@ export const Create = () => {
           <input type="submit" value="Submit"></input>
         </form>
       </div>
-      {/* </div> */}
     </div>
   );
 };

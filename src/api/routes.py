@@ -62,8 +62,12 @@ def handle_user():
             return jsonify({"msg": "Add user password"}), 401
         if 'is_active' not in body:
             return "Add user activity status", 400
+        if 'firstName' == None:
+            return "Add first Name", 400
+        if 'lastName' == None:
+            return "Add Last Name", 400
         print(body)
-        newUser = User(email=body["email"], password=body["password"], is_active=body["is_active"])
+        newUser = User(firstName=body["firstName"], lastName=body["lastName"],email=body["email"], password=body["password"], is_active=body["is_active"])
         db.session.add(newUser)
         db.session.commit()
 
@@ -92,15 +96,6 @@ def create_token():
     else:
         access_token = create_access_token(user.email)
         return jsonify({"access_token":access_token}), 200
-
-
-    # try:
-    #     ph.verify(user.password, body["password"])
-    # except:
-    #     return "Failed auth", 401
-    # access_token = create_access_token(identity=user.id)
-    # #access_token = create_access_token(identity=user.email)
-    # return jsonify({"access_token": access_token}), 200
     
 
 @api.route('/protected', methods=['GET'])

@@ -2,6 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       email: "",
+      firstName: "",
+      lastName: "",
       textFile: null, //creating storage for the files we will work with and return
       textArray: null,
       displayText: null,
@@ -60,13 +62,15 @@ const getState = ({ getStore, getActions, setStore }) => {
         //console log for debugging
         //console.log("is this user verfied? ", store.verifiedUser);
       },
-      createUser: async (mail, pass) => {
+      createUser: async (fName, lName, mail, pass) => {
         await fetch(process.env.BACKEND_URL + "/api/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            firstName: fName,
+            lastName: lName,
             email: mail,
             password: pass,
             is_active: true,
