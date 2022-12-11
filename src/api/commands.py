@@ -14,7 +14,7 @@ def setup_commands(app):
     by typing: $ flask insert-test-users 5
     Note: 5 is the number of users to add
     """
-    @app.cli.command("insert-test-users") # name of our command
+    @app.cli.command("insert-db-info") # name of our command
     def insert_test_data():
         #print("Creating test users")
         #for x in range(1, int(count) + 1):
@@ -34,9 +34,9 @@ def setup_commands(app):
         db.session.add(info)
         db.session.commit()
         print("User_ID: ", info.user_id, "new_text: ", info.new_text)
-
+        print("")
         print("Test info has been stored")
-
+        print("")
         print("variables are set up in the backend. Time to start developing! :) ")
 
         ### Insert the code to populate others tables if needed
