@@ -28,15 +28,13 @@ def setup_commands(app):
         db.session.commit()
         print("User: ", user.email, " created.")
 
-        print("All test users created")
-
         info = Info()
         info.user_id = 1
         info.title = "Test Title"
         info.new_text = "Lorem ipsum dolor sit amet, his ea tamquam ceteros theophrastus, te partem abhorreant sit. Qui id simul convenire. Dicit oratio vivendum nec ei, qui altera intellegam no. Sed in stet noster comprehensam, ut albucius appetere mel, consequuntur conclusionemque ea sit. Ius fuisset mnesarchum suscipiantur et. Vidit detraxit tacimates te vix. Admodum officiis ea sed, omnis nulla omittam ad vis. Ne natum invenire salutatus est. Ea aperiam evertitur per, ne suas ancillae platonem cum, autem iriure no sed. No eius dicant sea, volumus pertinacia in nec. Vim discere insolens patrioque eu. Sed cu exerci propriae, illud etiam option cu nam, in mel nisl erant. Nec et denique expetenda omittantur. Ut ancillae invidunt vis, per no fabulas nominati. Postea atomorum abhorreant ut his, alii scripta ut sit. Eu vim vocibus aliquando, an eam putant debitis. Sea ex erat omnes moderatius. Ut vis debitis lucilius evertitur, tota quando sea cu. Duis admodum duo in, sit te commodo vidisse accusam, ea scripta petentium eos. Ad phaedrum dissentiet nec, id dicit bonorum has. Vim ea saepe populo. Ne natum assum appareat vel. Justo movet eu mea, inani nemore honestatis eu nam, noluisse invidunt est ne. Graeci oblique ne ius. Id his malis aeterno inimicus. Ei nam vero detracto senserit, per dicit putant insolens an. Eu est nisl tollit, sed clita constituto ea. Laoreet scripserit eu mea, at vel dicta putent liberavisse. Ut duo movet propriae voluptaria, est ex case munere voluptaria. Ea argumentum percipitur eum."
         db.session.add(info)
         db.session.commit()
-        print("User_ID: ", info.user_id, "new_text: ", info.new_text)
+        print("User_ID: ", info.user_id, "new_text: ", info.new_text, "title: ", info.title)
         print("")
         print("Test info has been stored")
         print("")
