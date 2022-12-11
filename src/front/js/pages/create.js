@@ -34,7 +34,6 @@ export const Create = () => {
   };
 
   return (
-<<<<<<< HEAD
     <div className="create w-75" style={{ marginLeft: "12%" }}>
       <div className=" d-flex justify-content-center align-items-center">
         <br></br>
@@ -42,19 +41,11 @@ export const Create = () => {
         <br></br>
       </div>
       <div className="d-flex align-items-center justify-content-center">
-=======
-    <div className="create w-75 text-center" style={{ marginLeft: "12%" }}>
-      {/* <div className="text-center align-items-center"> */}
-      <br></br>
-      <br></br>
-      <h1>Join WordSword!</h1>
-      <br></br>
-      <div className="form w-50" style={{ margin: "auto" }}>
->>>>>>> 0ed5c70 (updates)
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="mail">First Name: &nbsp;&nbsp;</label>
+        <form onSubmit={handleSubmit} className="pt-3">
+          <label className="createLabels">First Name: &nbsp;&nbsp;</label>
           <input
             type="text"
+            className="form-control"
             id="fName"
             name="fName"
             value={fName}
@@ -62,9 +53,10 @@ export const Create = () => {
             onChange={(event) => setFName(event.currentTarget.value)}
           ></input>
           <br></br>
-          <label htmlFor="mail">Last Name: &nbsp;&nbsp;</label>
+          <label className="createLabels">Last Name: &nbsp;&nbsp;</label>
           <input
             type="text"
+            className="form-control"
             id="lName"
             name="lName"
             value={lName}
@@ -72,7 +64,7 @@ export const Create = () => {
             onChange={(event) => setLName(event.currentTarget.value)}
           ></input>
           <br></br>
-          <label htmlFor="mail">Email: &nbsp;&nbsp;</label>
+          <label className="createLabels">Email: &nbsp;&nbsp;</label>
           <input
             type="email"
             className="form-control"
@@ -83,7 +75,7 @@ export const Create = () => {
             onChange={(event) => setEmail(event.currentTarget.value)}
           ></input>
           <br></br>
-          <label htmlFor="pass">Password: &nbsp;&nbsp;</label>
+          <label className="createLabels">Password: &nbsp;&nbsp;</label>
           <input
             type="password"
             className="form-control"

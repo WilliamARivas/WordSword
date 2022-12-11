@@ -30,7 +30,11 @@ div {
   border: 1px solid #fa8072;
   border-style: dashed;
 }
-
+.createLabels {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
 .button-submit {
   margin-bottom: 2rem;
 }
