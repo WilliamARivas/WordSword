@@ -11,9 +11,10 @@ export const User = (props) => {
     !store.verifiedUser ? navigate("/login") : <></>;
   });
 
+
   return (
     <div className="user text-center">
-      <h1>Welcome to your personal WordSword Page</h1>
+      <h1>Hi {store.firstName}, Welcome to your personal WordSword Page!</h1>
       <div className="container">
         <div className="row">
           <div className="col-4"></div>

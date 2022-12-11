@@ -106,4 +106,4 @@ def protected():
     #user = User.query.get(current_user_id)
     user = User.query.filter_by(email=current_user_id).first()
 
-    return jsonify({"msg": user.serialize()}), 200
+    return jsonify({"msg": user.serialize(), "firstName": user.firstName, "email": user.email}), 200

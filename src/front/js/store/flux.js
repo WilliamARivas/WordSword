@@ -3,7 +3,6 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       email: "",
       firstName: "",
-      lastName: "",
       textFile: null, //creating storage for the files we will work with and return
       textArray: null,
       displayText: null,
@@ -11,6 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       verifiedUser: false,
       newUser: false,
       token: "",
+      savedData: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -57,10 +57,29 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       signOut: () => {
         //resetting store values
-        setStore({ token: "", verifiedUser: false, email: "", newUser: false });
-        //const store = getStore();
-        //console log for debugging
-        //console.log("is this user verfied? ", store.verifiedUser);
+        setStore({
+          token: "",
+          verifiedUser: false,
+          email: "",
+          newUser: false,
+          firstName: "",
+        });
+      },
+      getSavedData: async () => {
+        await fetch(process.env.BACKEND_URL + "/api/info", {
+          method: "GET",
+          headers: {},
+          //redirect: "follow",
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            console.log("this is the saved data: ", result);
+            setStore( { savedData: result} );
+          })
+          .catch((err) => {
+            //error checking
+            console.log("this is the saved data error: ", err);
+          });
       },
       createUser: async (fName, lName, mail, pass) => {
         await fetch(process.env.BACKEND_URL + "/api/user", {
@@ -80,7 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .then((result) => {
             //set store value newUser to conditionally welcome first timers
-            setStore({ email: mail, newUser: true });
+            setStore({ newUser: true });
             //console.log("this is the create user result", result);
           })
           .catch((err) => console.log("this is the create user error: ", err));
@@ -100,7 +119,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .then((result) => {
             //console.log("this is the token response: ", result);
-            setStore({ token: result.access_token, email: email });
+            setStore({ token: result.access_token });
             //now that we have access token we call our
             //function to get JWT function and set user to verified
             getActions().getVerified();
@@ -115,13 +134,23 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
           redirect: "follow",
         })
-          .then((res) => {
+          .then((response) => response.json())
+          .then((result) => {
             const store = getStore();
+            console.log("before verified: ", store);
             //checking reponse
             //console.log("this is the get verfied response: ", res);
             //setting verfifiedUser to true
-            setStore({ verifiedUser: true });
-            //console.log("is this user verfied? ", store.verifiedUser);
+            setStore({
+              verifiedUser: true,
+              firstName: result.firstName,
+              email: result.email,
+            });
+            const store2 = getStore();
+            console.log("after verified: ", store2);
+            getActions().getSavedData();
+            const store3 = getStore();
+            console.log("after getting saved data: ", store3);
           })
           .catch((err) => {
             //error checking
@@ -131,38 +160,37 @@ const getState = ({ getStore, getActions, setStore }) => {
       sliceText: () => {
         //placehold
         const resultText = [];
-        const newArray = store.textArray.split(/\r?\n/) //splits text by new line to get paragraphs
-        for (let i = 0; i < newArray.length; i++){ //for each paragraph
-          const currentParagraph = newArray[i].split(/. /) //create an array containing each line in a paragraph
-          for (let j = 0; j < currentParagraph.length; j++){ //for each line in the paragraph
-            let newString = currentParagraph[j]
+        const newArray = store.textArray.split(/\r?\n/); //splits text by new line to get paragraphs
+        for (let i = 0; i < newArray.length; i++) {
+          //for each paragraph
+          const currentParagraph = newArray[i].split(/. /); //create an array containing each line in a paragraph
+          for (let j = 0; j < currentParagraph.length; j++) {
+            //for each line in the paragraph
+            let newString = currentParagraph[j];
             if (j == 0) {
-              if (newString < 50){
-                console.log("Entered short condition")
-                resultText.push(newString + ".")
-                resultText.push(currentParagraph[j+1] + ".")
+              if (newString < 50) {
+                console.log("Entered short condition");
+                resultText.push(newString + ".");
+                resultText.push(currentParagraph[j + 1] + ".");
+              } else {
+                resultText.push(newString + ".");
               }
-              else {
-                resultText.push(newString + ".")
-              }
-            }
-            else if (j == (currentParagraph.length-1)) {
-              if (newString < 50){
-                console.log("Entered short condition")
-                resultText.push(currentParagraph[j-1] + ".")
-                resultText.push(newString + ".")
-              }
-              else {
-                resultText.push(newString + ".")
+            } else if (j == currentParagraph.length - 1) {
+              if (newString < 50) {
+                console.log("Entered short condition");
+                resultText.push(currentParagraph[j - 1] + ".");
+                resultText.push(newString + ".");
+              } else {
+                resultText.push(newString + ".");
               }
             }
-            console.log("End j loop")
-            } //ends j loop
-          } //ends i loop
-          console.log(resultText)
-          setStore({ displayText: resultText });
-        } //closes slice text
-      }
-    }
-  }
+            console.log("End j loop");
+          } //ends j loop
+        } //ends i loop
+        console.log(resultText);
+        setStore({ displayText: resultText });
+      }, //closes slice text
+    },
+  };
+};
 export default getState;
