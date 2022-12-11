@@ -72,7 +72,8 @@ export const Home = () => {
           className="button-submit"
           type="submit"
           value="Slice Text"
-          onClick={() => {
+          onClick={(event) => {
+            event.preventDefault();
             actions.handlePaste(text)
             console.log(store.textArray);
             actions.sliceText()
