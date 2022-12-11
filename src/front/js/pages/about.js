@@ -9,7 +9,6 @@ export const About = () => {
       <br></br>
       <h1>Welcome to the about page!</h1>
       <br></br>
-      <br></br>
     </div>
   );
 };

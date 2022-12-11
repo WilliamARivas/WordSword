@@ -116,13 +116,13 @@ export const Navbar = () => {
     // </ul>
 
     <nav
-      className="navbar navbar-expand-sm navbar-light bg-light"
+      className="navbar navbar-expand-sm navbar-light bg-light sticky-top"
       // style={{ textColor: "white" }}
     >
       <div className="container-fluid">
-        {/* <a className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/">
           WORDSWORD
-        </a> */}
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -138,17 +138,17 @@ export const Navbar = () => {
           className="collapse navbar-collapse text-white container-fluid justify-content-center"
           id="navbarNav"
         >
-          <ul className="navbar-nav">
+          <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <Link className="nav-link" aria-current="page" to="/">
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link" aria-current="page" to="/output">
                 Output
               </Link>
-            </li>
+            </li> */}
             {
               //conditionally render based on if user is NOT verified
               !store.verifiedUser ? (
@@ -193,8 +193,10 @@ export const Navbar = () => {
             {
               //conditionally render based on if user is verified
               store.verifiedUser ? (
-                <li className="nav-item nav-link" onClick={handleSignout}>
-                  Sign Out
+                <li className="nav-item" onClick={handleSignout}>
+                  <Link className="nav-link" to="/">
+                    Sign Out
+                  </Link>
                 </li>
               ) : (
                 <></>

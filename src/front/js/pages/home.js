@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import logoImageUrl from "../../img/WordSword.png";
+import logoImageUrl from "../../img/WordSwordnew.png";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
 import { Footer } from "../component/footer";
@@ -22,8 +22,9 @@ export const Home = () => {
         !store.verifiedUser ? (
           <p className="titleP mb-5">
             {" "}
-            WordSword takes long text documents or
-            pdfs and runs them through our algorithm to isolate the most important parts and convert them into a more concise file.
+            WordSword takes long text documents or pdfs and runs them through
+            our algorithm to isolate the most important parts and convert them
+            into a more concise file.
           </p>
         ) : (
           <></>
@@ -74,9 +75,9 @@ export const Home = () => {
           value="Slice Text"
           onClick={(event) => {
             event.preventDefault();
-            actions.handlePaste(text)
+            actions.handlePaste(text);
             console.log(store.textArray);
-            actions.sliceText()
+            actions.sliceText();
           }}
         />
       </form>
