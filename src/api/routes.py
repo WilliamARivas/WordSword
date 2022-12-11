@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Info
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, JWTManager
 # from argon2 import PasswordHasher
@@ -20,6 +20,32 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+
+@api.route('/info', methods=['POST', 'GET'])
+def handle_info():
+    if request.method == 'POST':
+        body = request.get_json()
+        if body == None:
+            return "The request body is null", 400
+        if 'user_id' not in body:
+            return jsonify({"msg": "no user in body"}), 401
+        if 'user_id' == None:
+            return jsonify({"msg": "body return but user is blank"}), 401
+        if 'new_text' == None:
+            return "No new text to store", 400
+        print(body)
+        newInfo = Info(user_id=body["user_id"], new_text=body["new_text"])
+        db.session.add(newInfo)
+        db.session.commit()
+
+        return 'info has been added to DB', 200
+    else:
+        ##to get the info from insomnia with a get
+        info = Info.query.all()
+        info_list = list(map(lambda x: x.serialize(), info))
+
+        return jsonify(info_list), 200
 
 
 #we need to add more code to check if user exists and other
