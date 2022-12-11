@@ -31,6 +31,7 @@ class User(db.Model):
 class Info(db.Model):
     __tablename__ = 'info'
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(20), unique=True, nullable=False)
     user_id = db.Column(db.Integer, ForeignKey('user.id'))
     new_text = db.Column(db.Text, unique=False, nullable=False)
 
@@ -40,6 +41,7 @@ class Info(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "title": self.title,
             "user_id" : self.user_id,
             "new_text": self.new_text
         }
