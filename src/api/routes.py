@@ -35,7 +35,7 @@ def handle_info():
         if 'new_text' == None:
             return "No new text to store", 400
         print(body)
-        newInfo = Info(user_id=body["user_id"], new_text=body["new_text"])
+        newInfo = Info(user_id=body["user_id"], title=body["title"], new_text=body["new_text"])
         db.session.add(newInfo)
         db.session.commit()
 
