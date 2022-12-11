@@ -144,6 +144,11 @@ export const Navbar = () => {
                 Home
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/output">
+                Output
+              </Link>
+            </li>
             {
               //conditionally render based on if user is NOT verified
               !store.verifiedUser ? (

@@ -56,9 +56,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       signOut: () => {
         //resetting store values
         setStore({ token: "", verifiedUser: false, email: "", newUser: false });
-        const store = getStore();
+        //const store = getStore();
         //console log for debugging
-        console.log("is this user verfied? ", store.verifiedUser);
+        //console.log("is this user verfied? ", store.verifiedUser);
       },
       createUser: async (mail, pass) => {
         await fetch(process.env.BACKEND_URL + "/api/user", {
@@ -77,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((result) => {
             //set store value newUser to conditionally welcome first timers
             setStore({ email: mail, newUser: true });
-            console.log("this is the create user result", result);
+            //console.log("this is the create user result", result);
           })
           .catch((err) => console.log("this is the create user error: ", err));
       },
@@ -95,7 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         })
           .then((response) => response.json())
           .then((result) => {
-            console.log("this is the token response: ", result);
+            //console.log("this is the token response: ", result);
             setStore({ token: result.access_token, email: email });
             //now that we have access token we call our
             //function to get JWT function and set user to verified
@@ -114,10 +114,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((res) => {
             const store = getStore();
             //checking reponse
-            console.log("this is the get verfied response: ", res);
+            //console.log("this is the get verfied response: ", res);
             //setting verfifiedUser to true
             setStore({ verifiedUser: true });
-            console.log("is this user verfied? ", store.verifiedUser);
+            //console.log("is this user verfied? ", store.verifiedUser);
           })
           .catch((err) => {
             //error checking
