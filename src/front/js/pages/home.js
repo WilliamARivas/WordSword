@@ -14,7 +14,7 @@ export const Home = () => {
 
   return (
     <div className="text-center">
-      <div className="logo">
+      <div className="logo py-4">
         <img src={logoImageUrl} className="homeLogo" />
       </div>
       {
