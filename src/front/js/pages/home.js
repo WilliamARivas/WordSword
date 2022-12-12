@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import logoImageUrl from "../../img/WordSwordnew.png";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/home.css";
-import { Footer } from "../component/footer";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -38,22 +37,7 @@ export const Home = () => {
           more concise file!
         </h1>
       </div>
-      {
-        //conditionally render if user  is verfied
-        // !store.verifiedUser ? (
-        //   <p className="titleP mb-5">
-        //     {" "}
-        //     WordSword takes long text documents or pdfs and runs them through
-        //     our algorithm to isolate the most important parts and convert them
-        //     into a more concise file.
-        //   </p>
-        // ) : (
-        //   <></>
-        // )
-      }
-      {
-        //conditionally render if user  is verfied
-        !store.verifiedUser ? (
+      {!store.verifiedUser ? (
           <p>
             Still dont have a WordSword account to save your work?{" "}
             <Link to="/create">Click here </Link>
@@ -98,7 +82,7 @@ export const Home = () => {
           value="Slice Text"
           onClick={ handleSplice }
         />
-      </form>
+    </div>
     </div>
   );
 };

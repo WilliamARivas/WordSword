@@ -100,16 +100,3 @@ export const Login = () => {
     </div>
   );
 };
-
-// {
-//   //conditional rendering but isn't working right now
-//   store.newUser ? (
-//     <h1>Welcome to WordSword, try logging in for the first time</h1>
-//   ) : (
-//     <h1>Welcome to the login page</h1>
-//   )
-// }
-
-{
-  /* <div className="text-center align-items-center"></div> */
-}
