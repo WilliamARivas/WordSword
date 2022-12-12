@@ -78,7 +78,7 @@ export const Home = () => {
         ></textarea>
 
         <input
-          className="button-submit"
+          className="button-submit btn btn-dark"
           type="submit"
           value="Slice Text"
           onClick={(event) => {
