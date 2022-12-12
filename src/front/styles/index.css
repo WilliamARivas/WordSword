@@ -22,6 +22,9 @@
 .big:hover {
   height: 70px;
 }
+.mainpage {
+  font-family: "Times New Roman", Times, serif;
+}
 
 /* 
     CSS FOR DEBUGGING
@@ -44,5 +47,5 @@ div {
   margin-bottom: 2rem;
 }
 body {
-  background-color: rgba(16, 151, 235, 0.082);
+  background-color: rgba(73, 84, 73, 0.082);
 }

@@ -13,22 +13,28 @@ export const Home = () => {
   const [file, setFile] = useState(null);
 
   return (
-    <div className="text-center">
-      <div className="logo py-4">
+    <div className="home text-center">
+      <div className="mainpage logo py-4 bg-light" style={{ marginBottom: 50 }}>
         <img src={logoImageUrl} className="homeLogo" />
+        <h1>
+          {" "}
+          WordSword takes long text documents or pdfs and runs them through our
+          algorithm to isolate the most important parts and convert them into a
+          more concise file!
+        </h1>
       </div>
       {
         //conditionally render if user  is verfied
-        !store.verifiedUser ? (
-          <p className="titleP mb-5">
-            {" "}
-            WordSword takes long text documents or pdfs and runs them through
-            our algorithm to isolate the most important parts and convert them
-            into a more concise file.
-          </p>
-        ) : (
-          <></>
-        )
+        // !store.verifiedUser ? (
+        //   <p className="titleP mb-5">
+        //     {" "}
+        //     WordSword takes long text documents or pdfs and runs them through
+        //     our algorithm to isolate the most important parts and convert them
+        //     into a more concise file.
+        //   </p>
+        // ) : (
+        //   <></>
+        // )
       }
       {
         //conditionally render if user  is verfied
@@ -42,24 +48,26 @@ export const Home = () => {
           <></>
         )
       }
-      <form>
-        <label htmlFor="textFile">Choose a file:</label>
-        <input
-          type="file"
-          id="textFile"
-          name="textFile"
-          accept=".txt, .pdf"
-          onChange={(e) => setFile(e.target.value)}
-        ></input>
-        <input
-          type="submit"
-          value="Slice File"
-          onClick={() => {
-            actions.setFile(file);
-          }}
-        />
+      <div className="form" type="form">
+        <div className="form button" style={{ marginBottom: 20 }}>
+          <label htmlFor="textFile">Choose a file:</label>
+          <input
+            type="file"
+            id="textFile"
+            name="textFile"
+            accept=".txt, .pdf"
+            onChange={(e) => setFile(e.target.value)}
+          ></input>
+          <input
+            type="submit"
+            value="Slice File"
+            onClick={() => {
+              actions.setFile(file);
+            }}
+          />
 
-        <label htmlFor="typedInput">Or copy and paste text here:</label>
+          <label htmlFor="typedInput">Or copy and paste text here:</label>
+        </div>
 
         <textarea
           className="form-control w-50 mx-auto"
@@ -84,7 +92,7 @@ export const Home = () => {
             //window.location.href="/output"
           }}
         />
-      </form>
+      </div>
       {/* <div className="alert alert-info">
         {store.message ||
           "Loading message from the backend (make sure your python backend is running)..."}
