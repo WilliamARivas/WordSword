@@ -71,15 +71,20 @@ const getState = ({ getStore, getActions, setStore }) => {
           headers: {},
           //redirect: "follow",
         })
-          .then((response) => response.json())
-          .then((result) => {
-            console.log("this is the saved data: ", result);
-            setStore( { savedData: result} );
-          })
-          .catch((err) => {
-            //error checking
-            console.log("this is the saved data error: ", err);
-          });
+        .then((response) => response.json())
+        .then((result) => {
+          //
+          var userData = [];
+          for(var i in result) {
+            userData.push([i, result[i]]);
+          }
+          setStore( { savedData: userData } );
+          console.log("this is the saved data: ", userData);
+        })
+        .catch((err) => {
+          //error checking
+          console.log("this is the saved data error: ", err);
+        });
       },
       createUser: async (fName, lName, mail, pass) => {
         await fetch(process.env.BACKEND_URL + "/api/user", {
