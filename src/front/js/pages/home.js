@@ -69,7 +69,7 @@ export const Home = () => {
         </div>
 
         <textarea
-          className="form-control w-50 mx-auto"
+          className="form-control w-50 mx-auto py-3"
           name="typedInput"
           rows="10"
           cols="60"
@@ -77,7 +77,7 @@ export const Home = () => {
         ></textarea>
 
         <input
-          className="button-submit btn btn-dark"
+          className="button-submit btn btn-dark m-3"
           type="submit"
           value="Slice Text"
           onClick={ handleSplice }

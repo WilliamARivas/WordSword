@@ -11,20 +11,32 @@ export const OutputCopy = () => {
   const navigate = useNavigate();
 
   const handleTextClick = (event) => {
-    event.target.style.backgroundColor = 'rgb(255,255,0)'
-  }
+    event.target.style.backgroundColor = "rgb(255,255,0)";
+  };
 
   return (
     <div className="container py-4">
+      <div className="d-flex justify-content-center">
+        <h1>OUTPUT PAGE</h1>
+      </div>
+      <div>
         {store.displayText.map((item, index) => {
           return (
-              <span className="flashyText" onClick={handleTextClick}>{item}</span>
+            <span className="flashyText" id={index} onClick={handleTextClick}>
+              {item}
+            </span>
           );
         })}
-      <br />
-      <Link to="/">
-        <button className="btn btn-primary">Back home</button>
-      </Link>
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div className="d-flex justify-content-center">
+        <span>:Save Word Sword Text:</span>
+        <span>:Save Highlighted Text:</span>
+      </div>
     </div>
   );
 };
