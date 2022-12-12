@@ -34,14 +34,14 @@ export const Create = () => {
   };
 
   return (
-    <div className="create w-75" style={{ marginLeft: "12%" }}>
-      <div className=" d-flex justify-content-center align-items-center">
-        <br></br>
-        <h1>Join WordSword!</h1>
-        <br></br>
-      </div>
-      <div className="d-flex align-items-center justify-content-center">
-=======
+    // <div className="create w-75" style={{ marginLeft: "12%" }}>
+    //   <div className=" d-flex justify-content-center align-items-center">
+    //     <br></br>
+    //     <h1>Join WordSword!</h1>
+    //     <br></br>
+    //   </div>
+    // <div className="d-flex align-items-center justify-content-center">
+    // =======
     <div className="create w-75 text-center" style={{ marginLeft: "12%" }}>
       {/* <div className="text-center align-items-center"> */}
       <br></br>
@@ -49,7 +49,7 @@ export const Create = () => {
       <h1>Join WordSword!</h1>
       <br></br>
       <div className="form w-50" style={{ margin: "auto" }}>
->>>>>>> 0ed5c70 (updates)
+        {/* >>>>>>> 0ed5c70 (updates) */}
         <form onSubmit={handleSubmit}>
           <label htmlFor="mail">First Name: &nbsp;&nbsp;</label>
           <input
