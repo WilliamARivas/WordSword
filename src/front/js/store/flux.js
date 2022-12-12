@@ -71,20 +71,20 @@ const getState = ({ getStore, getActions, setStore }) => {
           headers: {},
           //redirect: "follow",
         })
-        .then((response) => response.json())
-        .then((result) => {
-          //
-          var userData = [];
-          for(var i in result) {
-            userData.push([i, result[i]]);
-          }
-          setStore( { savedData: userData } );
-          console.log("this is the saved data: ", userData);
-        })
-        .catch((err) => {
-          //error checking
-          console.log("this is the saved data error: ", err);
-        });
+          .then((response) => response.json())
+          .then((result) => {
+            //
+            var userData = [];
+            for (var i in result) {
+              userData.push([i, result[i]]);
+            }
+            setStore({ savedData: userData });
+            console.log("this is the saved data: ", userData);
+          })
+          .catch((err) => {
+            //error checking
+            console.log("this is the saved data error: ", err);
+          });
       },
       createUser: async (fName, lName, mail, pass) => {
         await fetch(process.env.BACKEND_URL + "/api/user", {
@@ -165,37 +165,63 @@ const getState = ({ getStore, getActions, setStore }) => {
       sliceText: () => {
         //placehold
         const resultText = [];
+        const store = getStore();
         const newArray = store.textArray.split(/\r?\n/); //splits text by new line to get paragraphs
+        console.log(newArray);
         for (let i = 0; i < newArray.length; i++) {
           //for each paragraph
-          const currentParagraph = newArray[i].split(/. /); //create an array containing each line in a paragraph
-          for (let j = 0; j < currentParagraph.length; j++) {
-            //for each line in the paragraph
-            let newString = currentParagraph[j];
-            if (j == 0) {
-              if (newString < 50) {
-                console.log("Entered short condition");
-                resultText.push(newString + ".");
-                resultText.push(currentParagraph[j + 1] + ".");
-              } else {
-                resultText.push(newString + ".");
+          const currentParagraph = newArray[i].match(
+            /\(?[^\.\?\!]+[\.!\?]\)?/g
+          ); //create an array containing each line in a paragraph
+          //TIP: the above match patterns are from a system called regex, helpful to learn! xoxo, Faith
+          //console.log(currentParagraph);
+          if (currentParagraph != null) {
+            let chunkArray = []; //
+            for (let j = 0; j < currentParagraph.length; j++) {
+              //for each line in the paragraph
+              let newString = currentParagraph[j];
+              if (j == 0) {
+                if (newString.length < 50) {
+                  //console.log("Entered short condition");
+                  chunkArray.push(newString);
+                  let nextString = currentParagraph[j+1];
+                  chunkArray.push(nextString);
+                } else {
+                  chunkArray.push(newString);
+                }
+              } else if (j == currentParagraph.length - 1) {
+                if (newString.length < 50) {
+                  //console.log("Entered short condition");
+                  let prevString = currentParagraph[j-1];
+                  chunkArray.push(prevString);
+                  chunkArray.push(newString)
+                } else {
+                  chunkArray.push(newString);
+                }
               }
-            } else if (j == currentParagraph.length - 1) {
-              if (newString < 50) {
-                console.log("Entered short condition");
-                resultText.push(currentParagraph[j - 1] + ".");
-                resultText.push(newString + ".");
-              } else {
-                resultText.push(newString + ".");
-              }
-            }
-            console.log("End j loop");
-          } //ends j loop
+              //console.log("End j loop");
+            } //ends j loop
+            //console.log(chunkArray)
+            resultText.push(chunkArray)
+          } //closes if not null statement
         } //ends i loop
-        console.log(resultText);
+        //console.log(resultText);
         setStore({ displayText: resultText });
       }, //closes slice text
-    },
+      readDisplay: () => {
+        const store = getStore();
+        let display = store.displayText;
+        for (let i = 0; i < display.length; i++) {
+          if (display[i] != null) {
+            let paragraph = "";
+            for (let j = 0; j < display[i].length; j++){
+              paragraph += display[i][j];
+            }
+            console.log(paragraph)
+          }
+        }
+      },
+    }, //closes actions
   };
 };
 export default getState;

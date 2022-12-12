@@ -76,8 +76,9 @@ export const Home = () => {
           onClick={(event) => {
             event.preventDefault();
             actions.handlePaste(text);
-            console.log(store.textArray);
+            //console.log(store.textArray);
             actions.sliceText();
+            actions.readDisplay();
           }}
         />
       </form>
