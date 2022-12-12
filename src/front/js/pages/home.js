@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import logoImageUrl from "../../img/WordSwordnew.png";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 import { Footer } from "../component/footer";
 
@@ -11,6 +11,21 @@ export const Home = () => {
   //variable for the text box that the user pastes in for our algorithm
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
+
+  //initiating navigate
+  const navigate = useNavigate();
+
+  const handleSplice = (event) =>{
+    event.preventDefault();
+    actions.handlePaste(text);
+    console.log(store.textArray);
+    actions.findKeyTerms();
+    actions.displayKeyTerms();
+    actions.sliceText();
+    actions.readDisplay();
+    //window.location.href="/output"
+    navigate("/outputcopy");
+  }
 
   return (
     <div className="home text-center">
@@ -81,28 +96,9 @@ export const Home = () => {
           className="button-submit btn btn-dark"
           type="submit"
           value="Slice Text"
-          onClick={(event) => {
-            event.preventDefault();
-            actions.handlePaste(text);
-            //console.log(store.textArray);
-            actions.findKeyTerms();
-            actions.displayKeyTerms();
-            actions.sliceText();
-            actions.readDisplay();
-            //window.location.href="/output"
-          }}
+          onClick={ handleSplice }
         />
-      </div>
-      {/* <div className="alert alert-info">
-        {store.message ||
-          "Loading message from the backend (make sure your python backend is running)..."}
-      </div> */}
-      {/* <p>
-        This boilerplate comes with lots of documentation:{" "}
-        <a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-          Read documentation
-        </a>
-      </p> */}
+      </form>
     </div>
   );
 };

@@ -10,6 +10,7 @@ import { Create } from "./pages/create";
 import { Demo } from "./pages/demo";
 import { User } from "./pages/user";
 import { Output } from "./pages/output";
+import { OutputCopy } from "./pages/outputcopy";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -38,6 +39,7 @@ const Layout = () => {
             <Route exact path="/demo" element={<Demo />} />
             <Route exact path="/user" element={<User />} />
             <Route exact path="/output" element={<Output />} />
+            <Route exact path="/outputcopy" element={<OutputCopy />} />
             <Route exact path="/" element={<Home />} />
             <Route render={() => <h1>Not found!</h1>} />
           </Routes>

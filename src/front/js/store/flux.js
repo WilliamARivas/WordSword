@@ -11,7 +11,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       newUser: false,
       token: "",
       savedData: [],
-      keyTerms: {},
+      splicedText: [],
+      keyTerms: {}
     },
     actions: {
       // Use getActions to call a function within a fuction

@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import logoImageUrl from "../../img/WordSword.png";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
-import { Footer } from "../component/footer";
 
 export const Output = () => {
   const { store, actions } = useContext(Context);
