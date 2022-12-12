@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import logoImageUrl from "../../img/WordSwordnew.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "../../styles/home.css";
 import { Footer } from "../component/footer";
 
@@ -77,8 +77,11 @@ export const Home = () => {
             event.preventDefault();
             actions.handlePaste(text);
             //console.log(store.textArray);
+            actions.findKeyTerms();
+            actions.displayKeyTerms();
             actions.sliceText();
             actions.readDisplay();
+            //window.location.href="/output"
           }}
         />
       </form>

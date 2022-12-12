@@ -11,6 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       newUser: false,
       token: "",
       savedData: [],
+      keyTerms: {},
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -162,12 +163,164 @@ const getState = ({ getStore, getActions, setStore }) => {
             console.log("this is the get verified error: ", err);
           });
       },
+      findKeyTerms: () => {
+        //function to go through each word in the text array and create another array with each word and its count
+        const store = getStore();
+        let firstArray = store.textArray.split(" ");
+        let wordArray = firstArray.map((element) => element.toUpperCase());
+        //console.log(wordArray);
+        const counts = {};
+        //counting up words with loops
+        for (let i = 0; i < wordArray.length; i++) {
+          if (Object.keys(counts).length == 0) {
+            counts[wordArray[i]] = 1;
+          } else if (Object.keys(counts).includes(wordArray[i]) == true) {
+            counts[wordArray[i]] += 1;
+          } else {
+            counts[wordArray[i]] = 1;
+          }
+        }
+        //has now stored all words with how often they appear
+        //create a list of common words and get rid of them from our word count object
+        const commonWords = [
+          "THE",
+          "OF",
+          "AND",
+          "A",
+          "TO",
+          "IN",
+          "IS",
+          "YOU",
+          "THAT",
+          "IT",
+          "HE",
+          "WAS",
+          "FOR",
+          "ON",
+          "ARE",
+          "AS",
+          "WITH",
+          "HIS",
+          "THEY",
+          "I",
+          "AT",
+          "BE",
+          "THIS",
+          "HAVE",
+          "FROM",
+          "OR",
+          "ONE",
+          "HAD",
+          "BY",
+          "WORD",
+          "BUT",
+          "NOT",
+          "WHAT",
+          "ALL",
+          "WERE",
+          "WE",
+          "WHEN",
+          "YOUR",
+          "CAN",
+          "SAID",
+          "THERE",
+          "USE",
+          "AN",
+          "EACH",
+          "WHICH",
+          "SHE",
+          "DO",
+          "HOW",
+          "THEIR",
+          "IF",
+          "WILL",
+          "UP",
+          "OTHER",
+          "ABOUT",
+          "OUT",
+          "MANY",
+          "THEN",
+          "THEM",
+          "THESE",
+          "SO",
+          "SOME",
+          "HER",
+          "WOULD",
+          "MAKE",
+          "LIKE",
+          "HIM",
+          "INTO",
+          "TIME",
+          "HAS",
+          "LOOK",
+          "TWO",
+          "MORE",
+          "WRITE",
+          "GO",
+          "SEE",
+          "NUMBER",
+          "NO",
+          "WAY",
+          "COULD",
+          "PEOPLE",
+          "MY",
+          "THAN",
+          "FIRST",
+          "WATER",
+          "BEEN",
+          "CALL",
+          "WHO",
+          "ITS",
+          "NOW",
+          "FIND",
+          "LONG",
+          "DOWN",
+          "DAY",
+          "DID",
+          "GET",
+          "COME",
+          "MADE",
+          "MAY",
+          "PART",
+          "OURS",
+          "SIT",
+          "SAT",
+          "OUR",
+          "TAKE",
+          "OURS",
+          "HERS",
+          "HIS",
+          "THEIRS"
+        ];
+        //change count number for common words to zero so they won't be registered
+        for (let i = 0; i < Object.keys(counts).length; i++) {
+          let currentWord = Object.keys(counts)[i];
+          if (commonWords.includes(currentWord) == true) {
+            counts[currentWord] = 0;
+          }
+        }
+        //console.log(counts);
+        //sort words to find top ten most common
+        const keyWords = {};
+        Object.keys(counts)
+          .sort((a, b) => counts[b] - counts[a])
+          .forEach((key, ind) => {
+            if (ind < 10) {
+              keyWords[key] = counts[key];
+            }
+          });
+        setStore({ keyTerms: keyWords });
+      },
+      displayKeyTerms: () => {
+        const store = getStore();
+        console.log(store.keyTerms)
+      },
       sliceText: () => {
         //placehold
         const resultText = [];
         const store = getStore();
         const newArray = store.textArray.split(/\r?\n/); //splits text by new line to get paragraphs
-        console.log(newArray);
+        //console.log(newArray);
         for (let i = 0; i < newArray.length; i++) {
           //for each paragraph
           const currentParagraph = newArray[i].match(
@@ -184,7 +337,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 if (newString.length < 50) {
                   //console.log("Entered short condition");
                   chunkArray.push(newString);
-                  let nextString = currentParagraph[j+1];
+                  let nextString = currentParagraph[j + 1];
                   chunkArray.push(nextString);
                 } else {
                   chunkArray.push(newString);
@@ -192,9 +345,9 @@ const getState = ({ getStore, getActions, setStore }) => {
               } else if (j == currentParagraph.length - 1) {
                 if (newString.length < 50) {
                   //console.log("Entered short condition");
-                  let prevString = currentParagraph[j-1];
+                  let prevString = currentParagraph[j - 1];
                   chunkArray.push(prevString);
-                  chunkArray.push(newString)
+                  chunkArray.push(newString);
                 } else {
                   chunkArray.push(newString);
                 }
@@ -202,7 +355,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               //console.log("End j loop");
             } //ends j loop
             //console.log(chunkArray)
-            resultText.push(chunkArray)
+            resultText.push(chunkArray);
           } //closes if not null statement
         } //ends i loop
         //console.log(resultText);
@@ -211,13 +364,15 @@ const getState = ({ getStore, getActions, setStore }) => {
       readDisplay: () => {
         const store = getStore();
         let display = store.displayText;
-        for (let i = 0; i < display.length; i++) {
-          if (display[i] != null) {
-            let paragraph = "";
-            for (let j = 0; j < display[i].length; j++){
-              paragraph += display[i][j];
+        if (display != null) {
+          for (let i = 0; i < display.length; i++) {
+            if (display[i] != null) {
+              let paragraph = "";
+              for (let j = 0; j < display[i].length; j++) {
+                paragraph += display[i][j];
+              }
+              console.log(paragraph);
             }
-            console.log(paragraph)
           }
         }
       },
