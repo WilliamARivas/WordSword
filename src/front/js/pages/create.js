@@ -35,7 +35,7 @@ export const Create = () => {
 
   return (
     <div className="create w-75" style={{ marginLeft: "12%" }}>
-      <div className=" d-flex justify-content-center align-items-center">
+      <div className=" d-flex justify-content-center align-items-center py-4">
         <br></br>
         <h1>Join WordSword!</h1>
         <br></br>
@@ -87,7 +87,7 @@ export const Create = () => {
             onChange={(event) => setPassword(event.currentTarget.value)}
           ></input>
           <br></br>
-          <input type="submit" value="Submit"></input>
+          <input className="createSubmit d-flex justify-content-center" type="submit" value="Submit"></input>
         </form>
       </div>
     </div>

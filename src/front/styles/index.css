@@ -36,6 +36,10 @@ div {
   text-align: center;
   width: 100%;
 }
+.createSubmit {
+  margin: auto;
+  width: 50%;
+}
 .button-submit {
   margin-bottom: 2rem;
 }
