@@ -96,7 +96,7 @@ export const Create = () => {
             onChange={(event) => setPassword(event.currentTarget.value)}
           ></input>
           <br></br>
-          <div className="btn" style={{ marginLeft: "30%" }}>
+          <div className="btn">
             <button className="btn btn-success" type="submit">
               Submit
             </button>
