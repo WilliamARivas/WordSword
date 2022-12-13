@@ -31,7 +31,6 @@ export const OutputCopy = () => {
           {Object.keys(store.keyTerms).map(function (key, index) {
             return (
               <span className="text-dark" id={index}>
-                <br></br>
                 {key} : {store.keyTerms[key]} times
                 <br></br>
               </span>

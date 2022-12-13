@@ -294,6 +294,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           "HERS",
           "HIS",
           "THEIRS",
+          "CAN",
+          "CANNOT",
+          "USUALLY",
+          "OFTEN",
+          "SOMETIMES"
         ];
         //change count number for common words to zero so they won't be registered
         for (let i = 0; i < Object.keys(counts).length; i++) {
