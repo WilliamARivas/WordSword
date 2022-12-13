@@ -58,7 +58,7 @@ export const Login = () => {
   return (
     <div
       className="container-fluid text-center align-items-center w-75"
-      style={{ marginLeft: "12%" }}
+      style={{ marginLeft: "12%", marginTop: "4%" }}
     >
       <br></br>
       <h1>Welcome Back!</h1>

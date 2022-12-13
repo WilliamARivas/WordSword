@@ -14,7 +14,7 @@ export const Home = () => {
   //initiating navigate
   const navigate = useNavigate();
 
-  const handleSplice = (event) =>{
+  const handleSplice = (event) => {
     event.preventDefault();
     actions.handlePaste(text);
     console.log(store.textArray);
@@ -24,7 +24,7 @@ export const Home = () => {
     actions.readDisplay();
     //window.location.href="/output"
     navigate("/outputcopy");
-  }
+  };
 
   return (
     <div className="home text-center">
@@ -37,16 +37,16 @@ export const Home = () => {
           more concise file!
         </h1>
       </div>
+
       {!store.verifiedUser ? (
-          <p>
-            Still dont have a WordSword account to save your work?{" "}
-            <Link to="/create">Click here </Link>
-            to get set up!
-          </p>
-        ) : (
-          <></>
-        )
-      }
+        <p>
+          Still dont have a WordSword account to save your work?{" "}
+          <Link to="/create">Click here </Link>
+          to get set up!
+        </p>
+      ) : (
+        <></>
+      )}
       <div className="form" type="form">
         <div className="form button" style={{ marginBottom: 20 }}>
           <label htmlFor="textFile">Choose a file:</label>
@@ -80,9 +80,9 @@ export const Home = () => {
           className="button-submit btn btn-dark m-3"
           type="submit"
           value="Slice Text"
-          onClick={ handleSplice }
+          onClick={handleSplice}
         />
-    </div>
+      </div>
     </div>
   );
 };

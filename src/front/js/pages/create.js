@@ -42,7 +42,10 @@ export const Create = () => {
     //   </div>
     // <div className="d-flex align-items-center justify-content-center">
     // =======
-    <div className="create w-75 text-center" style={{ marginLeft: "12%" }}>
+    <div
+      className="create w-75 text-center"
+      style={{ marginLeft: "12%", marginTop: "2%" }}
+    >
       {/* <div className="text-center align-items-center"> */}
       <br></br>
       <br></br>

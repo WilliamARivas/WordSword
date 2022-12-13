@@ -5,10 +5,16 @@ import { Link } from "react-router-dom";
 export const About = () => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="text-center w-75" style={{ marginLeft: "12%" }}>
+    <div
+      className="text-center w-75"
+      style={{ marginLeft: "12%", marginTop: "5%" }}
+    >
       <h1>Welcome to the about us page!</h1>
       <br></br>
-      <div className="row row-cols-1 row-cols-md-3 g-4">
+      <div
+        className="row row-cols-1 row-cols-md-3 g-4"
+        style={{ marginTop: "3%" }}
+      >
         <div className="col">
           <div className="card h-100">
             <img src="..." className="card-img-top" alt="..."></img>
