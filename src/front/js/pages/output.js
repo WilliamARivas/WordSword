@@ -9,7 +9,7 @@ export const Output = () => {
 
   return (
     <div className="text-center">
-       {
+      {
         //conditionally render if user  is verfied
         !store.verifiedUser ? (
           <p>

@@ -23,33 +23,33 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-      <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          {/* <div className="main text-center bg-success p-2 text-dark bg-opacity-25"> */}
-          {/* <div
+    <BrowserRouter basename={basename}>
+      <ScrollToTop>
+        {/* <div className="main text-center bg-success p-2 text-dark bg-opacity-25"> */}
+        {/* <div
           className="row justify-content-start w-75 "
           style={{ marginLeft: "12%" }}
           > */}
-          <Navbar />
-          <Routes>
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="/donate" element={<Donate />} />
-            <Route exact path="/create" element={<Create />} />
-            <Route exact path="/demo" element={<Demo />} />
-            <Route exact path="/user" element={<User />} />
-            <Route exact path="/output" element={<Output />} />
-            <Route exact path="/outputcopy" element={<OutputCopy />} />
-            <Route exact path="/" element={<Home />} />
-            <Route render={() => <h1>Not found!</h1>} />
-          </Routes>
-          {/* </div> */}
-          {/* <div className="footerrow"> */}
-          <Footer />
-          {/* </div> */}
-          {/* </div> */}
-        </ScrollToTop>
-      </BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/donate" element={<Donate />} />
+          <Route exact path="/create" element={<Create />} />
+          <Route exact path="/demo" element={<Demo />} />
+          <Route exact path="/user" element={<User />} />
+          <Route exact path="/output" element={<Output />} />
+          <Route exact path="/outputcopy" element={<OutputCopy />} />
+          <Route exact path="/" element={<Home />} />
+          <Route render={() => <h1>Not found!</h1>} />
+        </Routes>
+        {/* </div> */}
+        {/* <div className="footerrow"> */}
+        <Footer />
+        {/* </div> */}
+        {/* </div> */}
+      </ScrollToTop>
+    </BrowserRouter>
   );
 };
 

@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       firstName: "",
       textFile: null, //creating storage for the files we will work with and return
       textArray: null,
-      displayText: null,
+      displayText: [],
       message: null,
       verifiedUser: false,
       newUser: false,
@@ -153,7 +153,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               verifiedUser: true,
               firstName: result.firstName,
               email: result.email,
-              userID: result.user_id
+              userID: result.user_id,
             });
             const store2 = getStore();
             console.log("after verified: ", store2);
@@ -298,7 +298,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           "CANNOT",
           "USUALLY",
           "OFTEN",
-          "SOMETIMES"
+          "SOMETIMES",
         ];
         //change count number for common words to zero so they won't be registered
         for (let i = 0; i < Object.keys(counts).length; i++) {
@@ -384,8 +384,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         }
       },
-      handlePDF: () => {
-      },
+      handlePDF: () => {},
       saveText: async (inputTitle) => {
         const store = getStore();
         await fetch(process.env.BACKEND_URL + "/api/info", {
@@ -396,16 +395,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify({
             title: inputTitle,
             user_id: store.userID,
-            new_text: store.displayText
+            new_text: store.displayText,
           }),
           // /* redirect: "follow", */
         })
           .then((response) => response.json())
           .then((result) => {
-            console.log("New info created")
+            console.log("New info created");
           })
           .catch((err) => console.log("Info creation error: ", err));
-      }
+      },
     }, //closes actions
   };
 };
