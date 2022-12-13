@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState} from "react";
 import { Context } from "../store/appContext";
 import logoImageUrl from "../../img/WordSwordnew.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ export const Home = () => {
   const handleSplice = (event) => {
     event.preventDefault();
     actions.handlePaste(text);
-    console.log(store.textArray);
+    //console.log(store.textArray);
     actions.findKeyTerms();
     actions.displayKeyTerms();
     actions.sliceText();
@@ -25,6 +25,29 @@ export const Home = () => {
     //window.location.href="/output"
     navigate("/outputcopy");
   };
+
+  const handleFileSplice = (newFile) => {
+    actions.handlePaste(newFile);
+    //console.log(store.textArray);
+    actions.findKeyTerms();
+    actions.displayKeyTerms();
+    actions.sliceText();
+    actions.readDisplay();
+    //window.location.href="/output"
+    navigate("/outputcopy");
+  }
+
+  // document.getElementById("myButton").addEventListener("click", function() {
+
+  //   var reader = new FileReader();
+  //   reader.addEventListener('load', function() {
+  //     document.getElementById('inputFile').innerText = this.result;
+  //   });
+  //   reader.readAsText(document.querySelector('input').files[0]);
+  
+  // });
+
+
 
   return (
     <div className="home text-center">
@@ -47,26 +70,28 @@ export const Home = () => {
       ) : (
         <></>
       )}
-      <div className="form" type="form">
-        <div className="form button" style={{ marginBottom: 20 }}>
-          <label htmlFor="textFile">Choose a file:</label>
+      {/* <div className="form" type="form">
+        <div className="form button" style={{ marginBottom: 20 }}> */}
+        {/* <form action="fileupload" method="post" encType="multipart/form-data"> */}
+          <label htmlFor="inputFile">Choose a file:</label>
           <input
             type="file"
-            id="textFile"
-            name="textFile"
+            id="inputFile"
+            name="inputFile"
             accept=".txt, .pdf"
-            onChange={(e) => setFile(e.target.value)}
-          ></input>
-          <input
-            type="submit"
-            value="Slice File"
-            onClick={() => {
-              actions.setFile(file);
+            onChange= {(e) => {
+              let reader = new FileReader();
+              reader.onload = function(e) {
+                  handleFileSplice(reader.result)
+              }
+              reader.readAsText(e.target.files[0]);
             }}
-          />
-
+          ></input>
+          <button id="myButton">Submit</button>
+      {/* </form> */}
+          <br></br>
           <label htmlFor="typedInput">Or copy and paste text here:</label>
-        </div>
+        {/* /</div> */}
 
         <textarea
           className="form-control w-50 mx-auto py-3"
@@ -83,6 +108,6 @@ export const Home = () => {
           onClick={handleSplice}
         />
       </div>
-    </div>
+   // </div>
   );
 };

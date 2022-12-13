@@ -377,6 +377,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         }
       },
+      handleUpload: () => {
+        const store = getStore();
+        let fileElement = document.getElementById('inputFile');
+        if (fileElement) {
+        var file = fileElement.files[0]
+        var reader = new FileReader();
+        reader.readAsText(file)
+        setStore({ textArray: reader.result })}
+      }
     }, //closes actions
   };
 };
