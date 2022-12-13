@@ -19,12 +19,11 @@ export const User = (props) => {
     titles.forEach((element, index, arr) => {
       element.forEach((element2, index2, arr2) => {
         for (const property in element2) {
-          newArr.push(element[1]);
-          // console.log(`${property}: ${element2[property]}`);
+          if (property == "title") {
+            newArr.push(element2[property]);
+          }
         }
-        // newArr.push(element[1]);
       });
-      // newArr.push(element[1]);
     });
 
     console.log("these are titles: ", titles);
