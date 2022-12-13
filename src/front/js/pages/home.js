@@ -4,6 +4,8 @@ import logoImageUrl from "../../img/WordSwordnew.png";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
+const axios = require("axios");
+
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
@@ -26,6 +28,8 @@ export const Home = () => {
     navigate("/outputcopy");
   };
 
+  //below is code specifically for handling file inputs after they have been read as text
+  //does not need event prevent default, needs to receive text
   const handleFileSplice = (newFile) => {
     actions.handlePaste(newFile);
     //console.log(store.textArray);
@@ -37,16 +41,20 @@ export const Home = () => {
     navigate("/outputcopy");
   }
 
-  // document.getElementById("myButton").addEventListener("click", function() {
+  //creates a new FileReader() tool, says that when reader is called, it will also call handleFileSplice on its results
+  const txtRead = (event) => {
+    let reader = new FileReader();
+    reader.onload = function() {
+        handleFileSplice(reader.result)
+      } 
+    reader.readAsText(event.target.files[0]); //e.target.files[0] contains the file no matter the format
+    //here is where reader is called, so after it reads the file in as text it calls the function on the result
+  }
 
-  //   var reader = new FileReader();
-  //   reader.addEventListener('load', function() {
-  //     document.getElementById('inputFile').innerText = this.result;
-  //   });
-  //   reader.readAsText(document.querySelector('input').files[0]);
+  const pdfRead = (event) => {
+      //actions.handlePDF(formData)
+    }
   
-  // });
-
 
 
   return (
@@ -72,7 +80,7 @@ export const Home = () => {
       )}
       {/* <div className="form" type="form">
         <div className="form button" style={{ marginBottom: 20 }}> */}
-        {/* <form action="fileupload" method="post" encType="multipart/form-data"> */}
+        <form className="upload" action="api/fileupload" method="post" encType="multipart/form-data">
           <label htmlFor="inputFile">Choose a file:</label>
           <input
             type="file"
@@ -80,15 +88,19 @@ export const Home = () => {
             name="inputFile"
             accept=".txt, .pdf"
             onChange= {(e) => {
-              let reader = new FileReader();
-              reader.onload = function(e) {
-                  handleFileSplice(reader.result)
+              if (e.target.files[0].type == "text/plain") {
+                txtRead(e)
               }
-              reader.readAsText(e.target.files[0]);
-            }}
+              else if (e.target.files[0].type == "application/pdf"){
+                //here we pass to API to convert to text
+                //we will pass that text into handleFileSplice
+                console.log("Took in pdf")
+                pdfRead(e)
+              }
+          }}
           ></input>
           <button id="myButton">Submit</button>
-      {/* </form> */}
+      </form>
           <br></br>
           <label htmlFor="typedInput">Or copy and paste text here:</label>
         {/* /</div> */}

@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       token: "",
       savedData: [],
       splicedText: [],
-      keyTerms: {}
+      keyTerms: {},
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -291,7 +291,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           "OURS",
           "HERS",
           "HIS",
-          "THEIRS"
+          "THEIRS",
         ];
         //change count number for common words to zero so they won't be registered
         for (let i = 0; i < Object.keys(counts).length; i++) {
@@ -314,7 +314,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       displayKeyTerms: () => {
         const store = getStore();
-        console.log(store.keyTerms)
+        console.log(store.keyTerms);
       },
       sliceText: () => {
         //placehold
@@ -377,15 +377,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         }
       },
-      handleUpload: () => {
-        const store = getStore();
-        let fileElement = document.getElementById('inputFile');
-        if (fileElement) {
-        var file = fileElement.files[0]
-        var reader = new FileReader();
-        reader.readAsText(file)
-        setStore({ textArray: reader.result })}
-      }
+      handlePDF: () => {
+      },
     }, //closes actions
   };
 };
