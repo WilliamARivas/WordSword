@@ -10,8 +10,26 @@ export const User = (props) => {
 
   useEffect(() => {
     !store.verifiedUser ? navigate("/login") : <></>;
-    console.log(store.displayText);
+    getTitles();
   });
+
+  const getTitles = () => {
+    var titles = store.savedData;
+    var newArr = [];
+    titles.forEach((element, index, arr) => {
+      element.forEach((element2, index2, arr2) => {
+        for (const property in element2) {
+          newArr.push(element[1]);
+          // console.log(`${property}: ${element2[property]}`);
+        }
+        // newArr.push(element[1]);
+      });
+      // newArr.push(element[1]);
+    });
+
+    console.log("these are titles: ", titles);
+    console.log("these are closer to the title: ", newArr);
+  };
 
   return (
     <div className="user text-center" style={{ marginTop: "5%" }}>
@@ -19,18 +37,13 @@ export const User = (props) => {
       <div className="container" style={{ marginTop: "5%", height: "100%" }}>
         <div className="row" style={{ height: "100%" }}>
           <div className="col-3 container-fluid">
-            {store.displayText.map((item, index) => {
+            {/* {store.savedData.map((item, index) => {
               return (
-                <span
-                  className="flashyText text-dark"
-                  id={index}
-                  onClick={handleTextClick}
-                >
-                  &emsp;{item}
-                  <br></br>
-                </span>
+                <div className="text-dark" id={index}>
+                  {item}
+                </div>
               );
-            })}
+            })} */}
           </div>
           <div className="col-9 container-fluid">
             <OutputCard></OutputCard>
