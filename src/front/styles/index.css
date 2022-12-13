@@ -54,7 +54,15 @@ body {
 }
 .container {
   position: relative;
-  background: #2c3e50;
+  background: #29362a;
+  border-radius: 1rem;
+  z-index: 3;
+  backdrop-filter: blur(50rem);
+  background: linear-gradient(
+    to right bottom,
+    rgba(9, 8, 8, 0.7),
+    rgba(7, 0, 0, 0.099)
+  );
   height: 50vh;
 }
 

@@ -11,11 +11,10 @@ export const User = (props) => {
     !store.verifiedUser ? navigate("/login") : <></>;
   });
 
-
   return (
-    <div className="user text-center">
+    <div className="user text-center" style={{ marginTop: "5%" }}>
       <h1>Hi {store.firstName}, Welcome to your personal WordSword Page!</h1>
-      <div className="container">
+      <div className="container" style={{ marginTop: "5%" }}>
         <div className="row">
           <div className="col-4"></div>
           <div className="col-6">
