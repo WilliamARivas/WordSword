@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
 const axios = require("axios");
+//var formidable = require('formidable');
+//var fs = require('fs');
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -95,7 +97,7 @@ export const Home = () => {
                 //here we pass to API to convert to text
                 //we will pass that text into handleFileSplice
                 console.log("Took in pdf")
-                pdfRead(e)
+                actions.handlePDF(e.target.files[0])
               }
           }}
           ></input>

@@ -384,7 +384,20 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         }
       },
-      handlePDF: () => {},
+      handlePDF: async (fileInfo) => {
+        await fetch(process.env.BACKEND_URL + "/api/fileupload"), {
+          method: 'POST',
+          headers: {
+          'content-type': 'application/pdf',
+          'X-RapidAPI-Key': '476b881873msh3d0ee94e2486551p1d9c26jsn8c6e3e54ac51',
+          'X-RapidAPI-Host': 'ocr-nanonets.p.rapidapi.com'
+          },
+          body: fileInfo,
+        }
+	      .then(res => res.json())
+	      .then(json => console.log(json))
+	      .catch(err => console.error('error:' + err));
+        },
       saveText: async (inputTitle) => {
         const store = getStore();
         await fetch(process.env.BACKEND_URL + "/api/info", {

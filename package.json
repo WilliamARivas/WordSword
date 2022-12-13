@@ -74,6 +74,12 @@
 	},
 	"dependencies": {
 		"axios": "^1.2.1",
+		"browserify": "^17.0.0",
+		"crypto-browserify": "^3.12.0",
+		"dezalgo": "^1.0.4",
+		"formidable": "^2.1.1",
+		"fs": "^0.0.1-security",
+		"os-browserify": "^0.3.0",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-dom": "^16.8.4",

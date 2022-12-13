@@ -6,10 +6,10 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Info
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, JWTManager
-#from nanonets import NANONETSOCR
+from nanonets import NANONETSOCR
 
-#model = NANONETSOCR()
-#model.set_token('476b881873msh3d0ee94e2486551p1d9c26jsn8c6e3e54ac51')
+model = NANONETSOCR()
+model.set_token('476b881873msh3d0ee94e2486551p1d9c26jsn8c6e3e54ac51')
 
 api = Blueprint('api', __name__)
 # generate sitemap with all your endpoints
@@ -112,6 +112,6 @@ def protected():
 
 @api.route('/fileupload', methods=['POST'])
 def convert_pdf():
-    fileitem = form['inputFile']
-    #string = model.convert_to_string(fileitem,formatting='lines and spaces') 
-    #print(string)
+    body = request.get()
+    string = model.convert_to_string(fileitem,formatting='lines and spaces') 
+    print(string)
