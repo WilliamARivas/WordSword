@@ -15,6 +15,13 @@ export const OutputCopy = () => {
   };
   //two clicks should change it back
 
+  const handleSave = (event) => {
+    event.preventDefault();
+    let title = prompt("Please enter a title for this document:")
+    actions.saveText(title);
+    navigate("/user")
+  }
+
   return (
     <div className="container py-4 bg-light h-75">
       <div className="d-flex justify-content-center">
@@ -62,18 +69,21 @@ export const OutputCopy = () => {
               Still don't have a WordSword account to save your work?{" "}
               <Link to="/create">Click here </Link>
               to get set up!
+              <br></br>
+              Need to login? {" "}
+              <Link to="/login">Click here </Link>
             </p>
           ) : (
             <>
-              <Link to="/user">Save Text To Personal Library</Link>
-            </> //add link to lead them to personal page
+              <button onClick={handleSave}>Save Text To Personal Library</button>
+            </>
           )
         }
       </div>
-      <div className="d-flex justify-content-center">
+      {/* <div className="d-flex justify-content-center">
         <span>:Save Word Sword Text:</span>
         <span>:Save Highlighted Text:</span>
-      </div>
+      </div> */}
     </div>
   );
 };

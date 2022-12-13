@@ -13,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       savedData: [],
       splicedText: [],
       keyTerms: {},
+      userID: null,
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -152,6 +153,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               verifiedUser: true,
               firstName: result.firstName,
               email: result.email,
+              userID: result.user_id
             });
             const store2 = getStore();
             console.log("after verified: ", store2);
@@ -379,6 +381,26 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       handlePDF: () => {
       },
+      saveText: async (inputTitle) => {
+        const store = getStore();
+        await fetch(process.env.BACKEND_URL + "/api/info", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: inputTitle,
+            user_id: store.userID,
+            new_text: store.displayText
+          }),
+          // /* redirect: "follow", */
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            console.log("New info created")
+          })
+          .catch((err) => console.log("Info creation error: ", err));
+      }
     }, //closes actions
   };
 };
