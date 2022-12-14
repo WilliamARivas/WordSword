@@ -395,11 +395,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         }
       },
-      handlePDF: async (fileInfo) => {
-        //fetch happens on submit, we need this to store data in flux.js
-        const store = getStore;
-        setStore({ formData: fileInfo})
-      },
+      // handlePDF: async (fileInfo) => {
+      //   //fetch happens on submit, we need this to store data in flux.js
+      //   const store = getStore;
+      //   setStore({ formData: fileInfo})
+      // },
       saveText: async (inputTitle) => {
         const store = getStore();
         await fetch(process.env.BACKEND_URL + "/api/info", {

@@ -46,16 +46,16 @@ class Info(db.Model):
             "new_text": self.new_text
         }
 
-class FileUpload(db.Model):
-    __tablename__ = 'fileupload'
-    id = db.Column(db.Integer, primary_key=True)
-    blobby = db.Column(db.LargeBinary, nullable=False)
-    name = db.Column(db.String(50), unique=False, nullable=True)
-
-    def __repr__(self):
-        return f'<FileUpload {self.id}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-        }
+#class FileUpload(db.Model):
+#    __tablename__ = 'fileupload'
+#    id = db.Column(db.Integer, primary_key=True)
+#    blobby = db.Column(db.LargeBinary, nullable=False)
+#    name = db.Column(db.String(50), unique=False, nullable=True)
+#
+#    def __repr__(self):
+#        return f'<FileUpload {self.id}>'
+#
+#   def serialize(self):
+#        return {
+#            "id": self.id,
+#        }

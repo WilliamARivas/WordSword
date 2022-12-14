@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Info, FileUpload
+from api.models import db, User, Info
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, JWTManager
 #from nanonets import NANONETSOCR
@@ -110,17 +110,17 @@ def protected():
 
     return jsonify({"msg": user.serialize(), "firstName": user.firstName, "email": user.email}), 200
 
-@api.route('/fileupload', methods=['POST'])
-def accept_pdf():
-    print("Posted file: {}".format(request.files))
-    file = request.files
-    files = file.getlist('fileContent')
-    if (len(files) == 0):
-        return jsonify({"msg" : "failed"})
-    newFile = FileUpload(blobby = files)
-    db.session.add(newFile)
-    db.session.commit()
-    return jsonify({"msg": "ok"})
+# @api.route('/fileupload', methods=['POST'])
+# def accept_pdf():
+#     print("Posted file: {}".format(request.files))
+#     file = request.files
+#     files = file.getlist('fileContent')
+#     if (len(files) == 0):
+#         return jsonify({"msg" : "failed"})
+#     newFile = FileUpload(blobby = files)
+#     db.session.add(newFile)
+#     db.session.commit()
+#     return jsonify({"msg": "ok"})
     #if file.filename != '':
     #        file.save(file.filename)
     #r = requests.post("https://3001-williamarivas-wordsword-vqez97l2r1b.ws-us78.gitpod.io/fileupload", files=files)

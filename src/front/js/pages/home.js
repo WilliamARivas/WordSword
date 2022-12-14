@@ -89,9 +89,8 @@ export const Home = () => {
       ) : (
         <></>
       )}
-      {/* <div className="form" type="form">
-        <div className="form button" style={{ marginBottom: 20 }}> */}
-        <form className="upload" action="https://3001-williamarivas-wordsword-z0dh6fo970d.ws-us78.gitpod.io/api/fileupload" method="post" encType="multipart/form-data">
+      <div className="form" type="form">
+        {/* <div className="form button" style={{ marginBottom: 20 }}> */}
           <label htmlFor="inputFile">Choose a file:</label>
           <input
             type="file"
@@ -111,7 +110,7 @@ export const Home = () => {
           }}
           ></input>
           <button id="myButton">Submit</button>
-      </form>
+      </div>
           <br></br>
           <label htmlFor="typedInput">Or copy and paste text here:</label>
         {/* /</div> */}
