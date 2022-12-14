@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-export const OutputCard = () => {
+export const PersonalPortalCard = () => {
   return (
-    <div className="card w-50">
+    <div className="card w-100 h-100">
       <div className="card-body">
         {/* <a href="#" class="btn btn-dark position-absolute top-10 start-90">
           Button

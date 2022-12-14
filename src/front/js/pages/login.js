@@ -12,7 +12,7 @@ export const Login = () => {
   function resolveAfter1Second() {
     return new Promise((resolve) => {
       setTimeout(() => {
-        !store.verifiedUser ? navigate("/login") : navigate("/user");
+        !store.verifiedUser ? navigate("/login") : navigate("/personalPortal");
       }, 1000);
     });
   }
