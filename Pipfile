@@ -20,6 +20,7 @@ flask-admin = "*"
 flask-jwt-extended = "*"
 nanonets = "*"
 ocr-nanonets-wrapper = "*"
+pypdf2 = "*"
 
 [requires]
 python_version = "3.8"

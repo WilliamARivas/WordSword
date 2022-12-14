@@ -1,8 +1,11 @@
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import logoImageUrl from "../../img/WordSwordnew.png";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/home.css";
+
+const pdfjsLib = require("pdfjs-dist/legacy/build/pdf.js");
+
 
 const axios = require("axios");
 //var formidable = require('formidable');
@@ -41,32 +44,51 @@ export const Home = () => {
     actions.readDisplay();
     //window.location.href="/output"
     navigate("/output");
-  }
+  };
 
-  const handlePDFdata = (bin) => {
-    
-  }
+  const handlePDFdata = (event) => {
+    var file = event.target.files[0];
+
+    //Read the file using file reader
+    var fileReader = new FileReader();
+    fileReader.onload = function () {
+      //turn array buffer into typed array
+      var typedarray = new Uint8Array(this.result);
+      //pdfjs should be able to read this
+      const loadingTask = pdfjsLib.getDocument(typedarray);
+      loadingTask.promise
+      .then( function(pdf) {
+        pdf.getPage(i)
+      })
+        .then( function(page){
+        page.getTextContent()
+        })
+        .then( function(textContent) {
+          console.log(textContent)
+        })
+      }
+    //Step 3:Read the file as ArrayBuffer
+    fileReader.readAsArrayBuffer(file)
+    }
 
   //creates a new FileReader() tool, says that when reader is called, it will also call handleFileSplice on its results
   const txtRead = (event) => {
     let reader = new FileReader();
-    reader.onload = function() {
-        handleFileSplice(reader.result)
-      } 
+    reader.onload = function () {
+      handleFileSplice(reader.result);
+    };
     reader.readAsText(event.target.files[0]); //e.target.files[0] contains the file no matter the format
     //here is where reader is called, so after it reads the file in as text it calls the function on the result
-  }
+  };
 
   const pdfRead = (event) => {
-      //actions.handlePDF(formData)
-      let reader = new FileReader();
-      reader.onload = function() {
-        handleFileSplice(reader.result)
-      } 
-      reader.readAsBinaryString(event.target.files[0]);
-    }
-  
-
+    //actions.handlePDF(formData)
+    let reader = new FileReader();
+    reader.onload = function () {
+      handleFileSplice(reader.result);
+    };
+    reader.readAsBinaryString(event.target.files[0]);
+  };
 
   return (
     <div className="home text-center">
@@ -91,45 +113,44 @@ export const Home = () => {
       )}
       <div className="form" type="form">
         {/* <div className="form button" style={{ marginBottom: 20 }}> */}
-          <label htmlFor="inputFile">Choose a file:</label>
-          <input
-            type="file"
-            id="inputFile"
-            name="inputFile"
-            accept=".txt, .pdf"
-            onChange= {(e) => {
-              if (e.target.files[0].type == "text/plain") {
-                txtRead(e)
-              }
-              else if (e.target.files[0].type == "application/pdf"){
-                //here we pass to API to convert to text
-                //we will pass that text into handleFileSplice
-                console.log("Took in pdf")
-                actions.handlePDF(e.target.files[0])
-              }
-          }}
-          ></input>
-          <button id="myButton">Submit</button>
-      </div>
-          <br></br>
-          <label htmlFor="typedInput">Or copy and paste text here:</label>
-        {/* /</div> */}
-
-        <textarea
-          className="form-control w-50 mx-auto py-3"
-          name="typedInput"
-          rows="10"
-          cols="60"
-          onChange={(e) => setText(e.target.value)}
-        ></textarea>
-
+        <label htmlFor="inputFile">Choose a file:</label>
         <input
-          className="button-submit btn btn-dark m-3"
-          type="submit"
-          value="Slice Text"
-          onClick={handleSplice}
-        />
+          type="file"
+          id="inputFile"
+          name="inputFile"
+          accept=".txt, .pdf"
+          onChange={(e) => {
+            if (e.target.files[0].type == "text/plain") {
+              txtRead(e);
+            } else if (e.target.files[0].type == "application/pdf") {
+              //here we pass to API to convert to text
+              //we will pass that text into handleFileSplice
+              console.log("Took in pdf");
+              handlePDFdata(e);
+            }
+          }}
+        ></input>
+        <button id="myButton">Submit</button>
       </div>
-   // </div>
+      <br></br>
+      <label htmlFor="typedInput">Or copy and paste text here:</label>
+      {/* /</div> */}
+
+      <textarea
+        className="form-control w-50 mx-auto py-3"
+        name="typedInput"
+        rows="10"
+        cols="60"
+        onChange={(e) => setText(e.target.value)}
+      ></textarea>
+
+      <input
+        className="button-submit btn btn-dark m-3"
+        type="submit"
+        value="Slice Text"
+        onClick={handleSplice}
+      />
+    </div>
+    // </div>
   );
 };
