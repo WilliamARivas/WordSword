@@ -11,16 +11,15 @@ export const Output = () => {
   const navigate = useNavigate();
 
   const handleTextClick = (event) => {
-    event.target.style.backgroundColor = "rgba(128, 125, 216, 0.459)";
+    actions.setStyle();
   };
-  //two clicks should change it back
 
   const handleSave = (event) => {
     event.preventDefault();
-    let title = prompt("Please enter a title for this document:")
+    let title = prompt("Please enter a title for this document:");
     actions.saveText(title);
-    navigate("/personalPortal")
-  }
+    navigate("/personalPortal");
+  };
 
   return (
     <div className="container py-4 bg-light h-75">
@@ -47,6 +46,7 @@ export const Output = () => {
             <span
               className="flashyText text-dark"
               id={index}
+              style={{ backgroundColor: store.style }}
               onClick={handleTextClick}
             >
               &emsp;{item}
@@ -69,12 +69,13 @@ export const Output = () => {
               <Link to="/create">Click here </Link>
               to get set up!
               <br></br>
-              Need to login? {" "}
-              <Link to="/login">Click here </Link>
+              Need to login? <Link to="/login">Click here </Link>
             </p>
           ) : (
             <>
-              <button onClick={handleSave}>Save Text To Personal Library</button>
+              <button onClick={handleSave}>
+                Save Text To Personal Library
+              </button>
             </>
           )
         }

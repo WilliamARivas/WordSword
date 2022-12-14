@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       splicedText: [],
       keyTerms: {},
       userID: null,
+      style: "",
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -53,6 +54,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       setFile: (fileName) => {
         //needs to call API to send it to backend
         setStore({ textFile: fileName });
+      },
+      setStyle: () => {
+        const store = getStore();
+        if (store.style == ""){
+          setStore({ style: "rgba(128, 125, 216, 0.459)" });
+        }else{
+          setStore({ style: "" })  
+        }
       },
       handlePaste: (txt) => {
         setStore({ textArray: txt });
