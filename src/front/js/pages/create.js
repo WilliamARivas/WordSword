@@ -90,7 +90,7 @@ export const Create = () => {
           ></input>
           <br></br>
           <div className="btn">
-            <button className="btn btn-success" type="submit">
+            <button className="btn btn-success mb-5" type="submit">
               Submit
             </button>
           </div>
