@@ -6,10 +6,10 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Info
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, JWTManager
-from nanonets import NANONETSOCR
+#from nanonets import NANONETSOCR
 
-model = NANONETSOCR()
-model.set_token('476b881873msh3d0ee94e2486551p1d9c26jsn8c6e3e54ac51')
+#model = NANONETSOCR()
+#model.set_token('TzFCCdgoB_1utwc15OwNepOqX0XEAn88')
 
 api = Blueprint('api', __name__)
 # generate sitemap with all your endpoints
@@ -112,6 +112,14 @@ def protected():
 
 @api.route('/fileupload', methods=['POST'])
 def convert_pdf():
-    body = request.get()
-    string = model.convert_to_string(fileitem,formatting='lines and spaces') 
-    print(string)
+    print("Posted file: {}".format(request.files['file']))
+    file = request.files['file']
+    files = {'file': file.read()}
+    r = requests.post("https://3001-williamarivas-wordsword-vqez97l2r1b.ws-us78.gitpod.io/fileupload", files=files)
+
+    if r.ok:
+        return "File uploaded!"
+    else:
+        return "Error uploading file!"
+    #string = model.convert_to_string(fileitem,formatting='lines and spaces') 
+    #print(string)
