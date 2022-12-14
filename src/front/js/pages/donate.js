@@ -30,32 +30,55 @@ export const Donate = () => {
           <p>Because we made WordSword free, we gladly accept any donations!</p>
         </div>
       </div>
-      <p>
+      <p
+        className="select-donate"
+        style={{ marginTop: "5%", marginBottom: "3%" }}
+      >
         <b>Select donation amount below</b>
       </p>
       <div className="row row-cols-lg-5">
         <div className="col">
-          <button type="button" className="btn-donate btn-success btn-default">
+          <button
+            type="button"
+            class="btn btn-outline-success btn-rounded"
+            data-mdb-ripple-color="dark"
+          >
             $5
           </button>
         </div>
         <div className="col">
-          <button type="button" className="btn-donate btn-success btn-default">
+          <button
+            type="button"
+            class="btn btn-outline-success btn-rounded"
+            data-mdb-ripple-color="dark"
+          >
             $15
           </button>
-        </div>{" "}
+        </div>
         <div className="col">
-          <button type="button" className="btn-donate btn-success btn-default">
+          <button
+            type="button"
+            class="btn btn-outline-success btn-rounded"
+            data-mdb-ripple-color="dark"
+          >
             $25
           </button>
-        </div>{" "}
+        </div>
         <div className="col">
-          <button type="button" className="btn-donate btn-success btn-default">
+          <button
+            type="button"
+            class="btn btn-outline-success btn-rounded"
+            data-mdb-ripple-color="dark"
+          >
             $50
           </button>
-        </div>{" "}
+        </div>
         <div className="col">
-          <button type="button" className="btn-donate btn-success btn-default">
+          <button
+            type="button"
+            class="btn btn-outline-success btn-rounded"
+            data-mdb-ripple-color="dark"
+          >
             $100
           </button>
         </div>
