@@ -4,7 +4,7 @@ import logoImageUrl from "../../img/WordSwordnew.png";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
-const pdfjsLib = require("pdfjs-dist/legacy/build/pdf.js");
+//const pdfjsLib = require("pdfjs-dist/legacy/build/pdf.js");
 
 const axios = require("axios");
 //var formidable = require('formidable');
@@ -45,29 +45,8 @@ export const Home = () => {
     navigate("/output");
   };
 
-  const handlePDFdata = (event) => {
-    var file = event.target.files[0];
-
-    //Read the file using file reader
-    var fileReader = new FileReader();
-    fileReader.onload = function () {
-      //turn array buffer into typed array
-      var typedarray = new Uint8Array(this.result);
-      //pdfjs should be able to read this
-      const loadingTask = pdfjsLib.getDocument(typedarray);
-      loadingTask.promise
-        .then(function (pdf) {
-          pdf.getPage(i);
-        })
-        .then(function (page) {
-          page.getTextContent();
-        })
-        .then(function (textContent) {
-          console.log(textContent);
-        });
-    };
-    //Step 3:Read the file as ArrayBuffer
-    fileReader.readAsArrayBuffer(file);
+  const handlePDFdata = (newFile) => {
+    actions.handlePDF(newFile)
   };
 
   //creates a new FileReader() tool, says that when reader is called, it will also call handleFileSplice on its results
@@ -126,7 +105,7 @@ export const Home = () => {
               //here we pass to API to convert to text
               //we will pass that text into handleFileSplice
               console.log("Took in pdf");
-              handlePDFdata(e);
+              handlePDFdata(e.target.files[0]);
             }
           }}
         ></input>

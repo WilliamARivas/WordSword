@@ -420,6 +420,25 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.log("Info creation error: ", err));
       },
+      handlePDF: async (inputFile) => {
+        //more info here: https://ocr.space/OCRAPI at post parameter section
+        const store = getStore();
+        console.log("Received request");
+        await fetch("https://api.ocr.space/parse/image", {
+          method: "POST",
+          headers: {
+            "apikey" : "1f666673b488957",
+            "file" : inputFile,
+            "scale" : "true",
+            "OCREngine" : "2",
+            "filetype" : "PDF"
+          },
+          // /* redirect: "follow", */
+        })
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+      }
     }, //closes actions
   };
 };
