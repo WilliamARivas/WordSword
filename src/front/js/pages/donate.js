@@ -10,24 +10,16 @@ export const Donate = () => {
       style={{ marginLeft: "12%", marginTop: "5%" }}
     >
       <br></br>
-      <h1>
-        <u>
-          <b>Donate today!</b>
-        </u>
+      <h1 className="mb-6">
+          <u>Donate</u>
       </h1>
-      <p>Support the webdevs who made WordSword possible.</p>
-      <br></br>
-      <div className="container-donate">
+      <div className="container-donate mt-4">
         <div className="col">
-          <p>
-            Are you using WordSword and totally loving it? We sure hope you are!
-            Our team has put so many hours into this unique and technical
-            software for our own reading needs. However, once we realized how
-            truly helpful WordSword was, we absolutly could not gatekeep this
-            from the rest of the world! So we made WordSword totally accessible
-            so that everybody can have access to a piece of our special pie!
-          </p>
-          <p>Because we made WordSword free, we gladly accept any donations!</p>
+          <h5>
+            Enjoying WordSword? To support the work of our developers and help
+            keep this program free, please consider donating!
+          </h5>
+          <p>We accept PayPal and most major card companies.</p>
         </div>
       </div>
       <p

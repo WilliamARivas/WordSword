@@ -73,7 +73,7 @@ export const Home = () => {
       <div className="mainpage logo py-4 bg-light" style={{ marginBottom: 25 }}>
         <img src={logoImageUrl} className="homeLogo" />
         <h1>Reading through a lot of text can be HARD!</h1>
-        <h3>
+        <h3 className="p-1">
           {" "}
           That's why WordSword takes long documents and runs them
           through our algorithm to isolate the most important parts and convert
@@ -96,9 +96,10 @@ export const Home = () => {
       <h6>WordSword can accept .txt or .pdf files</h6>
       <div className="form" type="form">
         {/* <div className="form button" style={{ marginBottom: 20 }}> */}
-        <label htmlFor="inputFile">Choose a file:</label>
+        <label htmlFor="inputFile">Click here:</label>
         <input
           type="file"
+          className="m-1 justify-text-center"
           id="inputFile"
           name="inputFile"
           accept=".txt, .pdf"
@@ -127,7 +128,7 @@ export const Home = () => {
       ></textarea>
 
       <input
-        className="button-submit btn btn-dark m-3"
+        className="button-submit btn btn-dark mt-2 mb-5"
         type="submit"
         value="Slice Text"
         onClick={handleSplice}

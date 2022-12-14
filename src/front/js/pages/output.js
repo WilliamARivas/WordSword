@@ -22,8 +22,8 @@ export const Output = () => {
   };
 
   return (
-    <div className="container py-4 bg-light h-75">
-      <div className="d-flex justify-content-center">
+    <div className="container py-4 bg-light h-100 overflow-auto">
+      <div className="d-flex bg-light justify-content-center">
         <h2>Key Terms:</h2>
         <div>
           <p>The following terms appeared most frequently in your text.</p>
