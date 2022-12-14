@@ -27,7 +27,7 @@ export const Home = () => {
     actions.sliceText();
     actions.readDisplay();
     //window.location.href="/output"
-    navigate("/outputcopy");
+    navigate("/output");
   };
 
   //below is code specifically for handling file inputs after they have been read as text
@@ -40,7 +40,7 @@ export const Home = () => {
     actions.sliceText();
     actions.readDisplay();
     //window.location.href="/output"
-    navigate("/outputcopy");
+    navigate("/output");
   }
 
   const handlePDFdata = (bin) => {

@@ -9,49 +9,21 @@ export const Login = () => {
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   actions.getVerified();
-  // }, [store.token]);
-
-  // useEffect(() => {
-  //   if (store.verifiedUser) {
-  //     navigate("/user");
-  //   }
-  // }, [store.verifiedUser]);
-
-  //function to resolve after a time period
-  function resolveAfter2Seconds() {
-    console.log("starting slow promise");
+  function resolveAfter1Second() {
     return new Promise((resolve) => {
       setTimeout(() => {
-        //calling navigate after half a second
-        !store.verifiedUser ? navigate("/login") : navigate("/user");
-        resolve("slow");
-        console.log("slow promise is done");
+        !store.verifiedUser ? navigate("/login") : navigate("/personalPortal");
       }, 1000);
     });
   }
 
   async function navigateLogin() {
-    console.log("==SEQUENTIAL START==");
-
-    // 1. Execution gets here almost instantly
-    //this await function verifies the use
-    const slow = await resolveAfter2Seconds();
-    console.log(slow); // 2. this runs 2 seconds after 1.
+    const slow = await resolveAfter1Second();
   }
 
-  //this function is for when the user click the submit login
   const handleSubmit = (event) => {
-    //preventing the form from sending
     event.preventDefault();
-
-    //calling flux to get token - if we get token then we get
-    //jwt and verify the user
     actions.getToken(userEmail, userPassword);
-
-    //waiting half a second before moving to login page to let
-    //api await resolve
     navigateLogin();
   };
 

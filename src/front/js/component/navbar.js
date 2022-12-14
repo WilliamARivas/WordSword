@@ -172,7 +172,7 @@ export const Navbar = () => {
               //conditionally render based on if user is verified
               store.verifiedUser ? (
                 <li className="nav-item">
-                  <Link className="nav-link" to="/user  ">
+                  <Link className="nav-link" to="/personalPortal">
                     Personal Portal
                   </Link>
                 </li>
