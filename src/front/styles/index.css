@@ -52,8 +52,10 @@ body {
 .flashyText:hover {
   background-color: rgba(128, 125, 216, 0.459);
 }
-.pNav:hover{
-  background-color:rgba(128, 125, 216, 0.459);
+.pNav:hover {
+  background-color: rgba(128, 125, 216, 0.459);
+  color: white;
+  font-weight: bold;
 }
 .container {
   position: relative;

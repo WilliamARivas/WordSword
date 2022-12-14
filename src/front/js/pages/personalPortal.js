@@ -17,7 +17,9 @@ export const PersonalPortal = (props) => {
     !store.verifiedUser ? navigate("/login") : <></>;
   });
 
-  const handleClick = (event) => {
+  const handleClick = (e) => {
+    setCurrentTitle(store.savedData[e.currentTarget.id].title);
+    setCurrentText(store.savedData[e.currentTarget.id].new_text);
   };
 
   return (
@@ -27,15 +29,16 @@ export const PersonalPortal = (props) => {
         <div className="row h-100">
           <div className="col-3 container-fluid h-100 w-30">
             <h4 className="my-2">Here are your saved documents:</h4>
-            {store.savedTitles.map((item, index) => {
+            {store.savedData.map((item, index) => {
               return (
-                <div
-                  className="text-dark m-1 pNav"
-                  key={index}
-                  onClick={handleClick()}
+                <span
+                  className="m-1 pNav d-block"
+                  id={index}
+                  key={item.id}
+                  onClick={handleClick}
                 >
-                  {item}
-                </div>
+                  {item.title}
+                </span>
               );
             })}
           </div>

@@ -11,9 +11,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       newUser: false,
       token: "",
       savedData: [],
-      savedId: [],
-      savedTitles: [],
-      savedNewText: [],
       splicedText: [],
       keyTerms: {},
       userID: null,
@@ -71,27 +68,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
       parseSaveddData: () => {
-        var data = getStore()
+        var data = getStore();
         data = data.savedData;
-        var idArr = [];
-        var titleArr = [];
-        var newTextArr = [];
+        var newData = [];
         data.forEach((element, index, arr) => {
-          element.forEach((element2, index2, arr2) => {
-            for (const property in element2) {
-              if (property == "id") {
-                idArr.push(element2[property]);
-              }
-              if (property == "title") {
-                titleArr.push(element2[property]);
-              }
-              if (property == "new_text") {
-                newTextArr.push(element2[property]);
-              }
-            }
-          });
-        })
-        setStore( { savedId: idArr, savedTitles: titleArr, savedNewText: newTextArr } );
+          newData.push(element[1]);
+        });
+        setStore({ savedData : newData });
       },
       getSavedData: async () => {
         await fetch(process.env.BACKEND_URL + "/api/info", {
@@ -109,7 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ savedData: userData });
           })
           .then(() => {
-            getActions().parseSaveddData()
+            getActions().parseSaveddData();
           })
           .catch((err) => {
             //error checking
@@ -156,7 +139,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ token: result.access_token });
           })
           .then(() => {
-            getActions().getVerified()  
+            getActions().getVerified();
           })
           .catch((err) => console.log("this is the token error: ", err));
       },
@@ -178,7 +161,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           })
           .then(() => {
-            getActions().getSavedData()
+            getActions().getSavedData();
           })
           .catch((err) => {
             //error checking
@@ -404,19 +387,20 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       handlePDF: async (fileInfo) => {
-        await fetch(process.env.BACKEND_URL + "/api/fileupload"), {
-          method: 'POST',
-          headers: {
-          'content-type': 'multipart/form-data'
-          //'X-RapidAPI-Key': 'TzFCCdgoB_1utwc15OwNepOqX0XEAn88',
-          //'X-RapidAPI-Host': 'ocr-nanonets.p.rapidapi.com'
-          },
-          body: fileInfo,
-        }
-	      .then(res => res.json())
-	      .then(json => console.log(json))
-	      .catch(err => console.error('error:' + err));
-        },
+        await fetch(process.env.BACKEND_URL + "/api/fileupload"),
+          {
+            method: "POST",
+            headers: {
+              "content-type": "multipart/form-data",
+              //'X-RapidAPI-Key': 'TzFCCdgoB_1utwc15OwNepOqX0XEAn88',
+              //'X-RapidAPI-Host': 'ocr-nanonets.p.rapidapi.com'
+            },
+            body: fileInfo,
+          }
+            .then((res) => res.json())
+            .then((json) => console.log(json))
+            .catch((err) => console.error("error:" + err));
+      },
       saveText: async (inputTitle) => {
         const store = getStore();
         await fetch(process.env.BACKEND_URL + "/api/info", {
