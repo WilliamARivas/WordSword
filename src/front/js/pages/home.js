@@ -43,6 +43,10 @@ export const Home = () => {
     navigate("/outputcopy");
   }
 
+  const handlePDFdata = (bin) => {
+    
+  }
+
   //creates a new FileReader() tool, says that when reader is called, it will also call handleFileSplice on its results
   const txtRead = (event) => {
     let reader = new FileReader();
@@ -55,6 +59,11 @@ export const Home = () => {
 
   const pdfRead = (event) => {
       //actions.handlePDF(formData)
+      let reader = new FileReader();
+      reader.onload = function() {
+        handleFileSplice(reader.result)
+      } 
+      reader.readAsBinaryString(event.target.files[0]);
     }
   
 
