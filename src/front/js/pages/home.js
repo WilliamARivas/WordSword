@@ -46,7 +46,7 @@ export const Home = () => {
   };
 
   const handlePDFdata = (newFile) => {
-    actions.handlePDF(newFile)
+    actions.handlePDF(newFile);
   };
 
   //creates a new FileReader() tool, says that when reader is called, it will also call handleFileSplice on its results
@@ -72,13 +72,16 @@ export const Home = () => {
     <div className="home text-center">
       <div className="mainpage logo py-4 bg-light" style={{ marginBottom: 25 }}>
         <img src={logoImageUrl} className="homeLogo" />
-        <h1>Reading through a lot of text can be HARD!</h1>
-        <h3 className="p-1">
+        <h1>
+          <b>Reading through a lot of text can be HARD!</b>
+        </h1>
+        <h3 className="para">
           {" "}
-          That's why WordSword takes long documents and runs them
-          through our algorithm to isolate the most important parts and convert
-          them into a more concise form!
+          That's why WordSword takes long documents and runs them through our
+          algorithm to isolate the most important parts and convert them into a
+          more concise form!
         </h3>
+        <br></br>
         <h2>To start, all we need is a few words...</h2>
       </div>
 
@@ -116,7 +119,9 @@ export const Home = () => {
         ></input>
       </div>
       <br></br>
-      <label htmlFor="typedInput"><h6>Or you can copy and paste here:</h6></label>
+      <label htmlFor="typedInput">
+        <h6>Or you can copy and paste here:</h6>
+      </label>
       {/* </div> */}
 
       <textarea
