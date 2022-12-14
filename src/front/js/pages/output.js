@@ -23,7 +23,7 @@ export const Output = () => {
 
   return (
     <div className="container py-4 bg-light h-100 overflow-auto">
-      <div className="d-flex bg-light justify-content-center">
+      <div className="text-center mb-4">
         <h2>Key Terms:</h2>
         <div>
           <p>The following terms appeared most frequently in your text.</p>
@@ -38,7 +38,7 @@ export const Output = () => {
         </div>
       </div>
       <div className="d-flex justify-content-center">
-        <h1>Your Condensed Text:</h1>
+        <h1 className="mb-3">Your Condensed Text:</h1>
       </div>
       <div>
         {store.displayText.map((item, index) => {
@@ -73,7 +73,7 @@ export const Output = () => {
             </p>
           ) : (
             <>
-              <button onClick={handleSave}>
+              <button onClick={handleSave} className="mb-3">
                 Save Text To Personal Library
               </button>
             </>

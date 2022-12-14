@@ -9,8 +9,9 @@ export const About = () => {
       className="text-center w-75"
       style={{ marginLeft: "12%", marginTop: "5%" }}
     >
-      <h1>Welcome to the about us page!</h1>
+      <h1><u>About Us</u></h1>
       <br></br>
+      <p>Placeholder for project story</p>
       <div
         className="row row-cols-1 row-cols-md-3 g-4"
         style={{ marginTop: "3%" }}
