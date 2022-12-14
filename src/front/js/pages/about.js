@@ -41,7 +41,7 @@ export const About = () => {
         </div>
         <div className="col">
           <div className="card h-100">
-            <img src="..." class="card-img-top" alt="..."></img>
+            <img src="..." className="card-img-top" alt="..."></img>
             <div className="card-body">
               <h5 className="card-title">Janeshka Folch</h5>
               <p className="card-text">Junior software developer.</p>

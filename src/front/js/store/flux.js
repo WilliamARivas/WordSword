@@ -11,7 +11,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       newUser: false,
       token: "",
       savedData: [],
+      savedId: [],
       savedTitles: [],
+      savedNewText: [],
       splicedText: [],
       keyTerms: {},
       userID: null,
@@ -21,7 +23,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
-
       getMessage: async () => {
         try {
           // fetching data from the backend
@@ -52,9 +53,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         //can probably delete later use for something earlier on
         const store = getStore();
       },
-      setTitles: (arr) => {
-        setStore({ savedTitles: arr });
-      },
       setFile: (fileName) => {
         //needs to call API to send it to backend
         setStore({ textFile: fileName });
@@ -72,6 +70,29 @@ const getState = ({ getStore, getActions, setStore }) => {
           firstName: "",
         });
       },
+      parseSaveddData: () => {
+        var data = getStore()
+        data = data.savedData;
+        var idArr = [];
+        var titleArr = [];
+        var newTextArr = [];
+        data.forEach((element, index, arr) => {
+          element.forEach((element2, index2, arr2) => {
+            for (const property in element2) {
+              if (property == "id") {
+                idArr.push(element2[property]);
+              }
+              if (property == "title") {
+                titleArr.push(element2[property]);
+              }
+              if (property == "new_text") {
+                newTextArr.push(element2[property]);
+              }
+            }
+          });
+        })
+        setStore( { savedId: idArr, savedTitles: titleArr, savedNewText: newTextArr } );
+      },
       getSavedData: async () => {
         await fetch(process.env.BACKEND_URL + "/api/info", {
           method: "GET",
@@ -86,7 +107,9 @@ const getState = ({ getStore, getActions, setStore }) => {
               userData.push([i, result[i]]);
             }
             setStore({ savedData: userData });
-            console.log("this is the saved data: ", userData);
+          })
+          .then(() => {
+            getActions().parseSaveddData()
           })
           .catch((err) => {
             //error checking
@@ -130,11 +153,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         })
           .then((response) => response.json())
           .then((result) => {
-            //console.log("this is the token response: ", result);
             setStore({ token: result.access_token });
-            //now that we have access token we call our
-            //function to get JWT function and set user to verified
-            getActions().getVerified();
+          })
+          .then(() => {
+            getActions().getVerified()  
           })
           .catch((err) => console.log("this is the token error: ", err));
       },
@@ -148,22 +170,15 @@ const getState = ({ getStore, getActions, setStore }) => {
         })
           .then((response) => response.json())
           .then((result) => {
-            const store = getStore();
-            console.log("before verified: ", store);
-            //checking reponse
-            //console.log("this is the get verfied response: ", res);
-            //setting verfifiedUser to true
             setStore({
               verifiedUser: true,
               firstName: result.firstName,
               email: result.email,
               userID: result.user_id,
             });
-            const store2 = getStore();
-            console.log("after verified: ", store2);
-            getActions().getSavedData();
-            const store3 = getStore();
-            console.log("after getting saved data: ", store3);
+          })
+          .then(() => {
+            getActions().getSavedData()
           })
           .catch((err) => {
             //error checking

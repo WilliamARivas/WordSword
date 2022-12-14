@@ -10,26 +10,7 @@ export const User = (props) => {
 
   useEffect(() => {
     !store.verifiedUser ? navigate("/login") : <></>;
-    getTitles();
   });
-
-  const getTitles = () => {
-    var titles = store.savedData;
-    var newArr = [];
-    titles.forEach((element, index, arr) => {
-      element.forEach((element2, index2, arr2) => {
-        for (const property in element2) {
-          if (property == "title") {
-            newArr.push(element2[property]);
-          }
-        }
-      });
-    });
-    actions.setTitles(newArr);
-
-    console.log("these are titles: ", titles);
-    console.log("these are closer to the title: ", newArr);
-  };
 
   return (
     <div className="user text-center" style={{ marginTop: "5%" }}>
@@ -39,7 +20,7 @@ export const User = (props) => {
           <div className="col-3 container-fluid">
             {store.savedTitles.map((item, index) => {
               return (
-                <div className="text-dark" id={index}>
+                <div className="text-dark" key={index}>
                   {item}
                 </div>
               );

@@ -9,16 +9,6 @@ export const Login = () => {
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   actions.getVerified();
-  // }, [store.token]);
-
-  // useEffect(() => {
-  //   if (store.verifiedUser) {
-  //     navigate("/user");
-  //   }
-  // }, [store.verifiedUser]);
-
   //function to resolve after a time period
   function resolveAfter2Seconds() {
     console.log("starting slow promise");
