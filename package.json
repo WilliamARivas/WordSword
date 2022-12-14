@@ -80,6 +80,7 @@
 		"formidable": "^2.1.1",
 		"fs": "^0.0.1-security",
 		"os-browserify": "^0.3.0",
+		"parse-multipart-data": "^1.5.0",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-dom": "^16.8.4",

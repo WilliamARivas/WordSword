@@ -49,7 +49,7 @@ class Info(db.Model):
 class FileUpload(db.Model):
     __tablename__ = 'fileupload'
     id = db.Column(db.Integer, primary_key=True)
-    bin = db.Column(db.LargeBinary, nullable=False)
+    blobby = db.Column(db.LargeBinary, nullable=False)
     name = db.Column(db.String(50), unique=False, nullable=True)
 
     def __repr__(self):
@@ -58,6 +58,4 @@ class FileUpload(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "bin": self.bin,
-            "name" : self.name,
         }

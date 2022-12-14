@@ -396,19 +396,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       handlePDF: async (fileInfo) => {
-        await fetch(process.env.BACKEND_URL + "/api/fileupload"),
-          {
-            method: "POST",
-            headers: {
-              "content-type": "multipart/form-data",
-              //'X-RapidAPI-Key': 'TzFCCdgoB_1utwc15OwNepOqX0XEAn88',
-              //'X-RapidAPI-Host': 'ocr-nanonets.p.rapidapi.com'
-            },
-            body: fileInfo,
-          }
-            .then((res) => res.json())
-            .then((json) => console.log(json))
-            .catch((err) => console.error("error:" + err));
+        //fetch happens on submit, we need this to store data in flux.js
+        const store = getStore;
+        setStore({ formData: fileInfo})
       },
       saveText: async (inputTitle) => {
         const store = getStore();
