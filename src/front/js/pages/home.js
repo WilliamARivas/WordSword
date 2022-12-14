@@ -70,26 +70,30 @@ export const Home = () => {
 
   return (
     <div className="home text-center">
-      <div className="mainpage logo py-4 bg-light" style={{ marginBottom: 50 }}>
+      <div className="mainpage logo py-4 bg-light" style={{ marginBottom: 25 }}>
         <img src={logoImageUrl} className="homeLogo" />
-        <h2>Reading through alot of text can be HARD!</h2>
+        <h1>Reading through a lot of text can be HARD!</h1>
         <h3>
           {" "}
-          Thankfully, WordSword takes long text documents or pdfs and runs them
+          That's why WordSword takes long documents and runs them
           through our algorithm to isolate the most important parts and convert
-          them into a more concise file!
+          them into a more concise form!
         </h3>
+        <h2>To start, all we need is a few words...</h2>
       </div>
 
       {!store.verifiedUser ? (
-        <p>
-          Still dont have a WordSword account to save your work?{" "}
+        <h6>
+          Still don't have a WordSword account to save your work?{" "}
           <Link to="/create">Click here </Link>
           to get set up!
-        </p>
+        </h6>
       ) : (
         <></>
       )}
+      <br></br>
+      <br></br>
+      <h6>WordSword can accept .txt or .pdf files</h6>
       <div className="form" type="form">
         {/* <div className="form button" style={{ marginBottom: 20 }}> */}
         <label htmlFor="inputFile">Choose a file:</label>
@@ -109,19 +113,11 @@ export const Home = () => {
             }
           }}
         ></input>
-        <button id="myButton">Submit</button>
       </div>
       <br></br>
-      <label htmlFor="typedInput">Or copy and paste text here:</label>
+      <label htmlFor="typedInput"><h6>Or you can copy and paste here:</h6></label>
       {/* </div> */}
 
-      <textarea
-        className="form-control w-50 mx-auto py-3"
-        name="typedInput"
-        rows="10"
-        cols="60"
-        onChange={(e) => setText(e.target.value)}
-      ></textarea>
       <textarea
         className="form-control w-50 mx-auto py-3"
         name="typedInput"
