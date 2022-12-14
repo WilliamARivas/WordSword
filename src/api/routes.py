@@ -111,15 +111,17 @@ def protected():
     return jsonify({"msg": user.serialize(), "firstName": user.firstName, "email": user.email}), 200
 
 @api.route('/fileupload', methods=['POST'])
-def convert_pdf():
+def accept_pdf():
     print("Posted file: {}".format(request.files['file']))
     file = request.files['file']
     files = {'file': file.read()}
-    r = requests.post("https://3001-williamarivas-wordsword-vqez97l2r1b.ws-us78.gitpod.io/fileupload", files=files)
+    if file.filename != '':
+            file.save(file.filename)
+    #r = requests.post("https://3001-williamarivas-wordsword-vqez97l2r1b.ws-us78.gitpod.io/fileupload", files=files)
 
-    if r.ok:
-        return "File uploaded!"
-    else:
-        return "Error uploading file!"
+    #if r.ok:
+    #    return "File uploaded!"
+    #else:
+    #    return "Error uploading file!"
     #string = model.convert_to_string(fileitem,formatting='lines and spaces') 
     #print(string)

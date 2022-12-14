@@ -45,3 +45,4 @@ class Info(db.Model):
             "user_id" : self.user_id,
             "new_text": self.new_text
         }
+        
