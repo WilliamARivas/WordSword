@@ -6,7 +6,6 @@ import "../../styles/home.css";
 
 const pdfjsLib = require("pdfjs-dist/legacy/build/pdf.js");
 
-
 const axios = require("axios");
 //var formidable = require('formidable');
 //var fs = require('fs');
@@ -57,19 +56,19 @@ export const Home = () => {
       //pdfjs should be able to read this
       const loadingTask = pdfjsLib.getDocument(typedarray);
       loadingTask.promise
-      .then( function(pdf) {
-        pdf.getPage(i)
-      })
-        .then( function(page){
-        page.getTextContent()
+        .then(function (pdf) {
+          pdf.getPage(i);
         })
-        .then( function(textContent) {
-          console.log(textContent)
+        .then(function (page) {
+          page.getTextContent();
         })
-      }
+        .then(function (textContent) {
+          console.log(textContent);
+        });
+    };
     //Step 3:Read the file as ArrayBuffer
-    fileReader.readAsArrayBuffer(file)
-    }
+    fileReader.readAsArrayBuffer(file);
+  };
 
   //creates a new FileReader() tool, says that when reader is called, it will also call handleFileSplice on its results
   const txtRead = (event) => {
@@ -94,12 +93,13 @@ export const Home = () => {
     <div className="home text-center">
       <div className="mainpage logo py-4 bg-light" style={{ marginBottom: 50 }}>
         <img src={logoImageUrl} className="homeLogo" />
-        <h1>
+        <h2>Reading through alot of text can be HARD!</h2>
+        <h3>
           {" "}
-          WordSword takes long text documents or pdfs and runs them through our
-          algorithm to isolate the most important parts and convert them into a
-          more concise file!
-        </h1>
+          Thankfully, WordSword takes long text documents or pdfs and runs them
+          through our algorithm to isolate the most important parts and convert
+          them into a more concise file!
+        </h3>
       </div>
 
       {!store.verifiedUser ? (
@@ -134,8 +134,15 @@ export const Home = () => {
       </div>
       <br></br>
       <label htmlFor="typedInput">Or copy and paste text here:</label>
-      {/* /</div> */}
+      {/* </div> */}
 
+      <textarea
+        className="form-control w-50 mx-auto py-3"
+        name="typedInput"
+        rows="10"
+        cols="60"
+        onChange={(e) => setText(e.target.value)}
+      ></textarea>
       <textarea
         className="form-control w-50 mx-auto py-3"
         name="typedInput"
@@ -149,8 +156,7 @@ export const Home = () => {
         type="submit"
         value="Slice Text"
         onClick={handleSplice}
-      />
+      ></input>
     </div>
-    // </div>
   );
 };

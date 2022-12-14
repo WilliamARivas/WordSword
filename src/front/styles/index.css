@@ -30,10 +30,10 @@
     CSS FOR DEBUGGING
 */
 
-div {
+/* div {
   border: 1px solid #fa8072;
   border-style: dashed;
-}
+} */
 .createLabels {
   margin: auto;
   text-align: center;
@@ -60,14 +60,14 @@ body {
 .container {
   position: relative;
   background: #29362a;
-  border-radius: 1rem;
+  /* border-radius: 1rem;
   z-index: 3;
-  backdrop-filter: blur(50rem);
-  background: linear-gradient(
+  backdrop-filter: blur(50rem); */
+  /* background: linear-gradient(
     to right bottom,
     rgba(9, 8, 8, 0.7),
     rgba(7, 0, 0, 0.099)
-  );
+  ); */
   height: 50vh;
 }
 
@@ -101,3 +101,8 @@ body {
   left: -1.5%;
   top: 40%;
 }
+/* .btn-donate {
+  min-width: 100px;
+  max-width: 100px;
+  border-radius: 1rem;
+} */
