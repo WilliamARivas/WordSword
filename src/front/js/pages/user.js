@@ -19,13 +19,13 @@ export const User = (props) => {
     titles.forEach((element, index, arr) => {
       element.forEach((element2, index2, arr2) => {
         for (const property in element2) {
-          newArr.push(element[1]);
-          // console.log(`${property}: ${element2[property]}`);
+          if (property == "title") {
+            newArr.push(element2[property]);
+          }
         }
-        // newArr.push(element[1]);
       });
-      // newArr.push(element[1]);
     });
+    actions.setTitles(newArr);
 
     console.log("these are titles: ", titles);
     console.log("these are closer to the title: ", newArr);
@@ -37,13 +37,13 @@ export const User = (props) => {
       <div className="container" style={{ marginTop: "5%", height: "100%" }}>
         <div className="row" style={{ height: "100%" }}>
           <div className="col-3 container-fluid">
-            {/* {store.savedData.map((item, index) => {
+            {store.savedTitles.map((item, index) => {
               return (
                 <div className="text-dark" id={index}>
                   {item}
                 </div>
               );
-            })} */}
+            })}
           </div>
           <div className="col-9 container-fluid">
             <OutputCard></OutputCard>

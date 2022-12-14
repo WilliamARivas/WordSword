@@ -11,6 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       newUser: false,
       token: "",
       savedData: [],
+      savedTitles: [],
       splicedText: [],
       keyTerms: {},
       userID: null,
@@ -50,6 +51,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       checkVerifiedUser: () => {
         //can probably delete later use for something earlier on
         const store = getStore();
+      },
+      setTitles: (arr) => {
+        setStore({ savedTitles: arr });
       },
       setFile: (fileName) => {
         //needs to call API to send it to backend
