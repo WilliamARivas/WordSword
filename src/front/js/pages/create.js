@@ -41,6 +41,9 @@ export const Create = () => {
       <br></br>
       <br></br>
       <h1>Join WordSword!</h1>
+      <div class="width80">
+        <div class="divider" />
+      </div>
       <br></br>
       <div className="form w-50" style={{ margin: "auto" }}>
         <form onSubmit={handleSubmit}>

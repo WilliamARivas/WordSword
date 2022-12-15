@@ -34,6 +34,10 @@ export const Login = () => {
     >
       <br></br>
       <h1>Welcome Back!</h1>
+      {/* thin divider here */}
+      <div class="width80">
+        <div class="divider" />
+      </div>
       <br></br>
       <form onSubmit={handleSubmit}>
         <div className="form-outline w-50" style={{ margin: "auto" }}>

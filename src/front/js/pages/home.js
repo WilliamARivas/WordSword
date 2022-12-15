@@ -73,8 +73,12 @@ export const Home = () => {
       <div className="mainpage logo py-4 bg-light" style={{ marginBottom: 25 }}>
         <img src={logoImageUrl} className="homeLogo" />
         <h1>
-          <b>Reading through a lot of text can be HARD!</b>
+          Reading through a lot of text can be <b>HARD!</b>
         </h1>
+        <div class="width80">
+          <div class="divider" />
+        </div>
+        <br></br>
         <h3 className="para">
           {" "}
           That's why WordSword takes long documents and runs them through our
@@ -82,8 +86,13 @@ export const Home = () => {
           more concise form!
         </h3>
         <br></br>
-        <h2>To start, all we need is a few words...</h2>
+        <h2 className="text-secondary">Let us start reading for you below!</h2>
       </div>
+      {/* <div className="divider">
+          <div className="minfo"></div>
+          <div className="forminfo"></div>
+        </div>
+      <div className="backcolor"></div> */}
 
       {!store.verifiedUser ? (
         <h6>
@@ -125,7 +134,7 @@ export const Home = () => {
       {/* </div> */}
 
       <textarea
-        className="form-control w-50 mx-auto py-3"
+        className="form-control w-50 mx-auto py-3 shadow-lg"
         name="typedInput"
         rows="10"
         cols="60"
@@ -141,3 +150,5 @@ export const Home = () => {
     </div>
   );
 };
+
+// bg-light

@@ -22,9 +22,6 @@
 .big:hover {
   height: 70px;
 }
-.mainpage {
-  font-family: Arial;
-}
 
 /* 
     CSS FOR DEBUGGING
@@ -109,4 +106,58 @@ body {
 
 .para {
   font-family: Verdana;
+}
+/* .divider {
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.minfo {
+  font-family: Arial;
+  width: 0;
+  height: 0;
+  border-top: 100px solid #f8f9fa;
+  border-left: 100vw solid transparent;
+}
+
+.forminfo {
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 0px;
+  border-bottom: 100px solid 255, 255, 255;
+  border-left: 100vw solid transparent;
+}
+
+.backcolor {
+  overflow: hidden;
+  height: 200px;
+  background: white; */
+.divider:before {
+  position: relative;
+  float: left;
+  background: linear-gradient(
+    to right,
+    rgba(200, 200, 200, 0),
+    rgba(200, 200, 200, 1) 50%
+  );
+  margin-top: 2px;
+  width: 50%;
+  height: 0.5px;
+  content: "";
+}
+
+.divider:after {
+  position: relative;
+  float: right;
+  background: linear-gradient(
+    to left,
+    rgba(100, 200, 200, 0),
+    rgba(200, 200, 200, 1) 50%
+  );
+  margin-top: 2px;
+  width: 50%;
+  height: 0.5px;
+  content: "";
 }

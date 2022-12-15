@@ -10,9 +10,11 @@ export const Donate = () => {
       style={{ marginLeft: "12%", marginTop: "5%" }}
     >
       <br></br>
-      <h1 className="mb-6">
-          <u>Donate</u>
-      </h1>
+      <h1 className="mb-6">Donate</h1>
+      <div class="width80">
+        <div class="divider" />
+      </div>
+      <br></br>
       <div className="container-donate mt-4">
         <div className="col">
           <h5>
