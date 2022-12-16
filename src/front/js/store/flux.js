@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       textFile: null, //creating storage for the files we will work with and return
       textArray: null,
       displayText: [],
+      notesText: ["load up some notes!"],
       message: null,
       verifiedUser: false,
       newUser: false,
@@ -51,16 +52,36 @@ const getState = ({ getStore, getActions, setStore }) => {
         //can probably delete later use for something earlier on
         const store = getStore();
       },
+      resetNotes: () => {
+        setStore({ notesText: "load up some notes!" });
+      },
+      setNoteText: (note) => {
+        const store = getStore();
+        const newNote = store.displayText[note];
+        const currentNotes = store.notesText;
+        if (currentNotes[0] == "load up some notes!") {
+          var newArr = [];
+          for (let i = 0; i < newNote.length; i++) {
+            newArr.push(newNote[i]);
+          }
+          setStore({ notesText: newArr });
+        } else {
+          for (let i = 0; i < newNote.length; i++) {
+            currentNotes.push(newNote[i]);
+            setStore({ notesText: currentNotes });
+          }
+        }
+      },
       setFile: (fileName) => {
         //needs to call API to send it to backend
         setStore({ textFile: fileName });
       },
       setStyle: () => {
         const store = getStore();
-        if (store.style == ""){
+        if (store.style == "") {
           setStore({ style: "rgba(128, 125, 216, 0.459)" });
-        }else{
-          setStore({ style: "" })  
+        } else {
+          setStore({ style: "" });
         }
       },
       handlePaste: (txt) => {
@@ -83,7 +104,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         data.forEach((element, index, arr) => {
           newData.push(element[1]);
         });
-        setStore({ savedData : newData });
+        setStore({ savedData: newData });
       },
       getSavedData: async () => {
         await fetch(process.env.BACKEND_URL + "/api/info", {
@@ -427,18 +448,18 @@ const getState = ({ getStore, getActions, setStore }) => {
         await fetch("https://api.ocr.space/parse/image", {
           method: "POST",
           headers: {
-            "apikey" : "1f666673b488957",
-            "file" : inputFile,
-            "scale" : "true",
-            "OCREngine" : "2",
-            "filetype" : "PDF"
+            apikey: "1f666673b488957",
+            file: inputFile,
+            scale: "true",
+            OCREngine: "2",
+            filetype: "PDF",
           },
           // /* redirect: "follow", */
         })
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-      }
+          .then((response) => response.text())
+          //.then((result) => console.log(result))
+          .catch((error) => console.log("error", error));
+      },
     }, //closes actions
   };
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import logoImageUrl from "../../img/WordSword.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,11 +9,10 @@ export const Output = () => {
 
   //initiating navigate
   const navigate = useNavigate();
-  const [notes, setNotes] =useState([]);
 
   const handleTextClick = (event) => {
     event.target.style.backgroundColor = "rgb(0,206,209)";
-    console.log(event.target.id);
+    actions.setNoteText(event.target.id);
   };
 
   const handleSave = (event) => {
@@ -66,22 +65,19 @@ export const Output = () => {
         })}
       </div>
       <br></br>
-      <h4>Your notes</h4>
-      <p className="text-muted">Here are the sentences you highlighted</p>
-      <div>
-        {store.displayText.map((item, index) => {
-          return (
-            <span
-              className="flashyText text-dark"
-              id={index}
-              key={index}
-              onClick={handleTextClick}
-            >
-              &emsp;{item}
-              <br></br>
-            </span>
-          );
-        })}
+      <div className="bg-dark text-light">
+        <h4>Your notes</h4>
+        <p className="text-muted">Here are the sentences you highlighted</p>
+        <div>
+          {store.notesText.map((item, index) => {
+            return (
+              <span className="flashyText text-light" id={index} key={index}>
+                &emsp;{item}
+                <br></br>
+              </span>
+            );
+          })}
+        </div>
       </div>
       <br></br>
       <br></br>
