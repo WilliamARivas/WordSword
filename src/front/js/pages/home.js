@@ -97,7 +97,7 @@ export const Home = () => {
           <div className="forminfo"></div>
         </div>
       <div className="backcolor"></div> */}
-      <h5 className="text-secondary">Let us start reading for you below!</h5>
+      <h5 className="text-secondary">Let's start below!</h5>
       {!store.verifiedUser ? (
         <h6>
           Still don't have a WordSword account to save your work?{" "}

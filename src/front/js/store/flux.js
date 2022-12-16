@@ -130,6 +130,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
       createUser: async (fName, lName, mail, pass) => {
+        console.log(fName, lName, mail, pass);
+        console.log(process.env.BACKEND_URL)
         await fetch(process.env.BACKEND_URL + "/api/user", {
           method: "POST",
           headers: {

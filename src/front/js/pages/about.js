@@ -18,13 +18,14 @@ export const About = () => {
       </div>
       <br></br>
       <p>
-        Our WordSword team came together at 4Geeks academy in 2022. Each of us
-        come from different backgrounds which brings excellent diversity to all
-        of our skill sets! We all truly took our time to make sure that
-        WordSword is a site that can help everybody wether your in school
-        finishing a project or getting new information for work on short notice.
-        Either way, us ourselves have all been in your position! We really hope
-        you enjoy using WordSword just as much as we enjoyed creating it for
+        WordSword was born from a need to read. The idea for this project came out of frustration
+        with long reading assignments and inaccessibility in higher education.
+        Our team formed at 4Geeks Academy in 2022, where each of us
+        came from a different background with a unique skillset. 
+        We set out to make WordSword a tool that anyone can use to make reading feel less intimidating.
+        Whether you have homework you don't want to tackle or long work documents to get through,
+        we've been in your shoes. We've worked hard to make an application that can ease your burden, so
+        we hope you enjoy using WordSword just as much as we enjoyed creating it for
         you!
       </p>
       <div
@@ -36,20 +37,20 @@ export const About = () => {
             <img src={FaithWard} className="card-img-top" alt=""></img>
             <div className="card-body rounded-3">
               <h5 className="card-title">Faith Ward</h5>
-              <div class="width80">
-                <div class="divider" />
+              <div className="width80">
+                <div className="divider" />
               </div>
               <br></br>
               <p className="card-text">
-                Junior full stack coder. Capable of creating the smoothest
-                algorithms!
+                Full stack developer, QA, and algorithm afficionado from South Florida. 
+                Oberlin College '22.
               </p>
               <a
                 className="btn btn-outline-primary"
                 href="https://www.linkedin.com/in/faithwardtech/"
                 target="_blank"
               >
-                <i class="fa-brands fa-linkedin"></i>
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>
@@ -59,12 +60,12 @@ export const About = () => {
             <img src={WilliamRivas} className="card-img-top" alt="..."></img>
             <div className="card-body">
               <h5 className="card-title">William Rivas</h5>
-              <div class="width80">
-                <div class="divider" />
+              <div className="width80">
+                <div className="divider" />
               </div>
               <br></br>
               <p className="card-text">
-                Junior software developer with years of experience and the most
+                Junior software developer with years of database experience and the most
                 technical debugger.
               </p>
               <a
@@ -72,7 +73,7 @@ export const About = () => {
                 href="https://www.linkedin.com/in/williamarivas/"
                 target="_blank"
               >
-                <i class="fa-brands fa-linkedin"></i>
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>
@@ -82,8 +83,8 @@ export const About = () => {
             <img src={JaneshkaFolch} className="card-img-top" alt="..."></img>
             <div className="card-body">
               <h5 className="card-title">Janeshka Folch</h5>
-              <div class="width80">
-                <div class="divider" />
+              <div className="width80">
+                <div className="divider" />
               </div>
               <br></br>
               <p className="card-text">
@@ -95,7 +96,7 @@ export const About = () => {
                 href="https://www.linkedin.com/in/janeshka-folch-37a77b1b5/"
                 target="_blank"
               >
-                <i class="fa-brands fa-linkedin"></i>
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>
