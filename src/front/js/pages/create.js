@@ -100,6 +100,12 @@ export const Create = () => {
           {/* <input type="submit" value="Submit"></input> */}
         </form>
       </div>
+      <div className="circle7"></div>
+      <div className="circle8"></div>
+      <div className="circle9"></div>
+      <div className="circle10"></div>
+      <div className="circle11"></div>
+      <div className="circle12"></div>
     </div>
   );
 };

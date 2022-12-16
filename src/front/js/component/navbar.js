@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import { element } from "prop-types";
+import WordSwordnew from "../../img/WordSwordnew.png";
 //I imported useNavigate
 
 export const Navbar = () => {
@@ -120,8 +121,8 @@ export const Navbar = () => {
       // style={{ textColor: "white" }}
     >
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          WORDSWORD
+        <Link className="navbar-brand" to="/" style={{ marginLeft: "2%" }}>
+          <img className="thumbnail" src={WordSwordnew}></img>
         </Link>
         <button
           className="navbar-toggler"

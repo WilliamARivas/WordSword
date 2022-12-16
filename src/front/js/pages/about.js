@@ -17,7 +17,16 @@ export const About = () => {
         <div class="divider" />
       </div>
       <br></br>
-      <p>Placeholder for project story</p>
+      <p>
+        Our WordSword team came together at 4Geeks academy in 2022. Each of us
+        come from different backgrounds which brings excellent diversity to all
+        of our skill sets! We all truly took our time to make sure that
+        WordSword is a site that can help everybody wether your in school
+        finishing a project or getting new information for work on short notice.
+        Either way, us ourselves have all been in your position! We really hope
+        you enjoy using WordSword just as much as we enjoyed creating it for
+        you!
+      </p>
       <div
         className="row row-cols-1 row-cols-md-3 g-4"
         style={{ marginTop: "3%" }}
@@ -27,8 +36,12 @@ export const About = () => {
             <img src={FaithWard} className="card-img-top" alt=""></img>
             <div className="card-body rounded-3">
               <h5 className="card-title">Faith Ward</h5>
+              <div class="width80">
+                <div class="divider" />
+              </div>
+              <br></br>
               <p className="card-text">
-                Senior Full stack coder. Capable of creating the smoothest
+                Junior full stack coder. Capable of creating the smoothest
                 algorithms!
               </p>
               <a
@@ -46,8 +59,12 @@ export const About = () => {
             <img src={WilliamRivas} className="card-img-top" alt="..."></img>
             <div className="card-body">
               <h5 className="card-title">William Rivas</h5>
+              <div class="width80">
+                <div class="divider" />
+              </div>
+              <br></br>
               <p className="card-text">
-                Master software developer with years of experience and the most
+                Junior software developer with years of experience and the most
                 technical debugger.
               </p>
               <a
@@ -65,9 +82,13 @@ export const About = () => {
             <img src={JaneshkaFolch} className="card-img-top" alt="..."></img>
             <div className="card-body">
               <h5 className="card-title">Janeshka Folch</h5>
+              <div class="width80">
+                <div class="divider" />
+              </div>
+              <br></br>
               <p className="card-text">
                 Junior software developer. Enjoys creating, designing, and
-                putting together pretty and user friendly websites.{" "}
+                putting together pretty and user friendly websites!{" "}
               </p>
               <a
                 class="btn btn-outline-primary"

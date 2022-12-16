@@ -56,15 +56,7 @@ body {
 }
 .container {
   position: relative;
-  background: #29362a;
-  /* border-radius: 1rem;
-  z-index: 3;
-  backdrop-filter: blur(50rem); */
-  /* background: linear-gradient(
-    to right bottom,
-    rgba(9, 8, 8, 0.7),
-    rgba(7, 0, 0, 0.099)
-  ); */
+  background: #c4c2c2;
   height: 50vh;
 }
 
@@ -98,11 +90,6 @@ body {
   left: -1.5%;
   top: 40%;
 }
-/* .btn-donate {
-  min-width: 100px;
-  max-width: 100px;
-  border-radius: 1rem;
-} */
 
 .para {
   font-family: Verdana;
@@ -134,6 +121,7 @@ body {
   overflow: hidden;
   height: 200px;
   background: white; */
+
 .divider:before {
   position: relative;
   float: left;
@@ -160,4 +148,101 @@ body {
   width: 50%;
   height: 0.5px;
   content: "";
+}
+.thumbnail {
+  height: 35px;
+  width: 35px;
+}
+
+.circle1,
+.circle2,
+.circle3,
+.circle4,
+.circle5,
+.circle6 {
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(25, 25, 25, 0.8),
+    rgba(0, 0, 0, 0.3)
+  );
+  height: 4rem;
+  width: 4rem;
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(2, 2, 2, 0.7),
+    rgba(2, 2, 2, 0.3)
+  );
+}
+.circle1 {
+  bottom: 10%;
+  left: 5%;
+}
+.circle2 {
+  bottom: 20%;
+  left: 5%;
+}
+.circle3 {
+  bottom: 30%;
+  left: 5%;
+}
+.circle4 {
+  bottom: 10%;
+  left: 15%;
+}
+.circle5 {
+  bottom: 10%;
+  left: 10%;
+}
+.circle6 {
+  bottom: 20%;
+  left: 10%;
+}
+.circle7,
+.circle8,
+.circle9,
+.circle10,
+.circle11,
+.circle12 {
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(25, 25, 25, 0.8),
+    rgba(0, 0, 0, 0.3)
+  );
+  height: 4rem;
+  width: 4rem;
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(2, 2, 2, 0.7),
+    rgba(2, 2, 2, 0.3)
+  );
+}
+.circle7 {
+  top: 10%;
+  right: 5%;
+}
+.circle8 {
+  top: 10%;
+  right: 10%;
+}
+.circle9 {
+  top: 10%;
+  right: 15%;
+}
+.circle10 {
+  top: 20%;
+  right: 5%;
+}
+.circle11 {
+  top: 30%;
+  right: 5%;
+}
+.circle12 {
+  top: 20%;
+  right: 10%;
 }

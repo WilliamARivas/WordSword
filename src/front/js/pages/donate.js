@@ -34,7 +34,7 @@ export const Donate = () => {
         <div className="col">
           <button
             type="button"
-            class="btn btn-outline-success btn-rounded"
+            class="btn btn-outline-success btn-rounded px-4"
             data-mdb-ripple-color="dark"
           >
             $5
@@ -43,7 +43,7 @@ export const Donate = () => {
         <div className="col">
           <button
             type="button"
-            class="btn btn-outline-success btn-rounded"
+            class="btn btn-outline-success btn-rounded px-4"
             data-mdb-ripple-color="dark"
           >
             $15
@@ -52,7 +52,7 @@ export const Donate = () => {
         <div className="col">
           <button
             type="button"
-            class="btn btn-outline-success btn-rounded"
+            class="btn btn-outline-success btn-rounded px-4"
             data-mdb-ripple-color="dark"
           >
             $25
@@ -61,7 +61,7 @@ export const Donate = () => {
         <div className="col">
           <button
             type="button"
-            class="btn btn-outline-success btn-rounded"
+            class="btn btn-outline-success btn-rounded px-4"
             data-mdb-ripple-color="dark"
           >
             $50
@@ -70,7 +70,7 @@ export const Donate = () => {
         <div className="col">
           <button
             type="button"
-            class="btn btn-outline-success btn-rounded"
+            class="btn btn-outline-success btn-rounded px-4"
             data-mdb-ripple-color="dark"
           >
             $100
