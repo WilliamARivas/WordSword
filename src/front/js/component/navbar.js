@@ -116,7 +116,7 @@ export const Navbar = () => {
     // </ul>
 
     <nav
-      className="navbar navbar-expand-sm navbar-dark bg-dark sticky-top"
+      className="navbar navbar-expand-sm navbar-dark bg-dark sticky-top shadow-lg"
       // style={{ textColor: "white" }}
     >
       <div className="container-fluid">
