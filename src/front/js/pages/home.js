@@ -70,23 +70,26 @@ export const Home = () => {
 
   return (
     <div className="home text-center">
-      <div className="mainpage logo py-4 bg-light" style={{ marginBottom: 25 }}>
+      <div className="mainpage logo py-1 bg-light" style={{ marginBottom: 25 }}>
         <img src={logoImageUrl} className="homeLogo" />
-        <h1>
+        <br></br>
+        <br></br>
+        <h5>
           Reading through a lot of text can be <b>HARD!</b>
-        </h1>
-        <div class="width80">
-          <div class="divider" />
+        </h5>
+        <div className="width60">
+          <div className="divider" />
+        </div>
+        <div className="w-50 container-fluid text-center">
+          <h6 className="para">
+            {" "}
+            That's why WordSword takes long documents and runs them through our
+            algorithm to isolate the most important parts and convert them into
+            a more concise form!
+          </h6>
         </div>
         <br></br>
-        <h3 className="para">
-          {" "}
-          That's why WordSword takes long documents and runs them through our
-          algorithm to isolate the most important parts and convert them into a
-          more concise form!
-        </h3>
-        <br></br>
-        <h2 className="text-secondary">Let us start reading for you below!</h2>
+        <h5 className="text-secondary">Let us start reading for you below!</h5>
       </div>
       {/* <div className="divider">
           <div className="minfo"></div>

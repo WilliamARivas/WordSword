@@ -25,8 +25,8 @@ export const Output = () => {
     <div className="container py-4 bg-light h-100 overflow-auto">
       <div className="text-center mb-4">
         <h2>Key Terms:</h2>
-        <div>
-          <p>The following terms appeared most frequently in your text.</p>
+        <p>The following terms appeared most frequently in your text.</p>
+        <div className="d-flex">
           {Object.keys(store.keyTerms).map(function (key, index) {
             return (
               <span className="text-dark" id={index}>
