@@ -9,9 +9,11 @@ export const Output = () => {
 
   //initiating navigate
   const navigate = useNavigate();
+  const [notes, setNotes] =useState([]);
 
   const handleTextClick = (event) => {
-    actions.setStyle();
+    event.target.style.backgroundColor = "rgb(0,206,209)";
+    console.log(event.target.id);
   };
 
   const handleSave = (event) => {
@@ -54,7 +56,7 @@ export const Output = () => {
             <span
               className="flashyText text-dark"
               id={index}
-              style={{ backgroundColor: store.style }}
+              key={index}
               onClick={handleTextClick}
             >
               &emsp;{item}
@@ -65,9 +67,22 @@ export const Output = () => {
       </div>
       <br></br>
       <h4>Your notes</h4>
-      <p className="text-muted">
-        Here are the sentences you highlighted
-      </p>
+      <p className="text-muted">Here are the sentences you highlighted</p>
+      <div>
+        {store.displayText.map((item, index) => {
+          return (
+            <span
+              className="flashyText text-dark"
+              id={index}
+              key={index}
+              onClick={handleTextClick}
+            >
+              &emsp;{item}
+              <br></br>
+            </span>
+          );
+        })}
+      </div>
       <br></br>
       <br></br>
       <br></br>

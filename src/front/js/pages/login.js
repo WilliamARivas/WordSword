@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../component/footer";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);

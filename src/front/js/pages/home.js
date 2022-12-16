@@ -17,6 +17,7 @@ export const Home = () => {
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
 
+
   //initiating navigate
   const navigate = useNavigate();
 
