@@ -70,7 +70,8 @@ export const Home = () => {
 
   return (
     <div className="home text-center">
-      <div className="mainpage logo py-1 bg-light" style={{ marginBottom: 25 }}>
+      <div className="mainpage logo bg-light" style={{ marginBottom: 25 }}>
+        <br></br>
         <img src={logoImageUrl} className="homeLogo" />
         <br></br>
         <br></br>
@@ -80,7 +81,7 @@ export const Home = () => {
         <div className="width60">
           <div className="divider" />
         </div>
-        <div className="w-50 container-fluid text-center">
+        <div className="w-50 container-fluid text-center pt-2">
           <h6 className="para">
             {" "}
             That's why WordSword takes long documents and runs them through our
@@ -89,14 +90,13 @@ export const Home = () => {
           </h6>
         </div>
         <br></br>
-        <h5 className="text-secondary">Let us start reading for you below!</h5>
       </div>
       {/* <div className="divider">
           <div className="minfo"></div>
           <div className="forminfo"></div>
         </div>
       <div className="backcolor"></div> */}
-
+      <h5 className="text-secondary">Let us start reading for you below!</h5>
       {!store.verifiedUser ? (
         <h6>
           Still don't have a WordSword account to save your work?{" "}

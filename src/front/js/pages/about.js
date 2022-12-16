@@ -13,8 +13,8 @@ export const About = () => {
       style={{ marginLeft: "12%", marginTop: "5%" }}
     >
       <h1>About Us</h1>
-      <div class="width80">
-        <div class="divider" />
+      <div className="width80">
+        <div className="divider" />
       </div>
       <br></br>
       <p>
@@ -45,7 +45,7 @@ export const About = () => {
                 algorithms!
               </p>
               <a
-                class="btn btn-outline-primary"
+                className="btn btn-outline-primary"
                 href="https://www.linkedin.com/in/faithwardtech/"
                 target="_blank"
               >
@@ -68,7 +68,7 @@ export const About = () => {
                 technical debugger.
               </p>
               <a
-                class="btn btn-outline-primary"
+                className="btn btn-outline-primary"
                 href="https://www.linkedin.com/in/williamarivas/"
                 target="_blank"
               >
@@ -91,7 +91,7 @@ export const About = () => {
                 putting together pretty and user friendly websites!{" "}
               </p>
               <a
-                class="btn btn-outline-primary"
+                className="btn btn-outline-primary"
                 href="https://www.linkedin.com/in/janeshka-folch-37a77b1b5/"
                 target="_blank"
               >

@@ -23,23 +23,31 @@ export const Output = () => {
 
   return (
     <div className="container py-4 bg-light h-100 overflow-auto">
-      <div className="text-center mb-4">
-        <h2>Key Terms:</h2>
-        <p>The following terms appeared most frequently in your text.</p>
-        <div className="d-flex">
+      <div className="d-flex justify-content-center">
+        <h3 className="mb-3 display-6">
+          Your document Summarized by WordSword
+        </h3>
+      </div>
+      <div className="mb-4">
+        <h4>Key Terms</h4>
+        <p className="text-muted">Here are the most common words</p>
+        <div className="container-fluid d-flex justify-content-start">
           {Object.keys(store.keyTerms).map(function (key, index) {
             return (
-              <span className="text-dark" id={index}>
-                {key} : {store.keyTerms[key]} times
-                <br></br>
-              </span>
+              <div className="m-auto" id={index}>
+                <div className="text-center fw-bold">{key}</div>
+                <div className="text-center text-muted">
+                  {store.keyTerms[key]} times
+                </div>
+              </div>
             );
           })}
         </div>
       </div>
-      <div className="d-flex justify-content-center">
-        <h1 className="mb-3">Your Condensed Text:</h1>
-      </div>
+      <h4>Condensed Text</h4>
+      <p className="text-muted">
+        Here are the most important sentences determined by our algorithm
+      </p>
       <div>
         {store.displayText.map((item, index) => {
           return (
@@ -55,6 +63,11 @@ export const Output = () => {
           );
         })}
       </div>
+      <br></br>
+      <h4>Your notes</h4>
+      <p className="text-muted">
+        Here are the sentences you highlighted
+      </p>
       <br></br>
       <br></br>
       <br></br>

@@ -35,8 +35,8 @@ export const Login = () => {
       <br></br>
       <h1>Welcome Back!</h1>
       {/* thin divider here */}
-      <div class="width80">
-        <div class="divider" />
+      <div className="width80">
+        <div className="divider" />
       </div>
       <br></br>
       <form onSubmit={handleSubmit}>

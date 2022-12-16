@@ -11,8 +11,8 @@ export const Donate = () => {
     >
       <br></br>
       <h1 className="mb-6">Donate</h1>
-      <div class="width80">
-        <div class="divider" />
+      <div className="width80">
+        <div className="divider" />
       </div>
       <br></br>
       <div className="container-donate mt-4">
